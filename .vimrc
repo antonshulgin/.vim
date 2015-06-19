@@ -50,6 +50,9 @@ set matchpairs+=<:>
 " Custom keywords
 set iskeyword+=-
 
+" Workaround for vim-jade iskeyword
+au BufEnter * set iskeyword-=.
+
 " Default statusline + the filetype tag
 set statusline=%<%F\ %y%h%m%r%=%-14.(%l,%c%V%)\ %P\ %{fugitive#statusline()}
 
@@ -121,8 +124,10 @@ let g:tagbar_autofocus = 1
 map <silent> <Leader>t :TagbarToggle<CR>
 
 " Syntastic
-let g:syntastic_error_symbol='E→'
-let g:syntastic_warning_symbol='W→'
+"let g:syntastic_error_symbol='E→'
+"let g:syntastic_warning_symbol='W→'
+let g:syntastic_error_symbol='→'
+let g:syntastic_warning_symbol='→'
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=1
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute']
@@ -142,7 +147,7 @@ set listchars=eol:¬,tab:\|\
 if has("gui_running")
 	"colorscheme kitamorkonom
 	colorscheme monokromatik
-	set columns=100
+	set columns=120
 	set lines=30
 	set linespace=0
 	"set guifont=Menlo:h10
@@ -193,10 +198,14 @@ Bundle 'tpope/vim-surround'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/tpope/vim-fugitive'
 
+Bundle 'https://github.com/xolox/vim-session'
+Bundle 'https://github.com/xolox/vim-misc'
+
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'othree/xml.vim'
 Bundle 'https://github.com/gorodinskiy/vim-coloresque'
+Bundle 'https://github.com/JulesWang/css.vim'
 
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
@@ -218,6 +227,7 @@ Bundle 'https://github.com/ervandew/supertab'
 " Utilities
 " L9 is needed in order to make AutoComplPop work
 Bundle 'https://github.com/eparreno/vim-l9'
+
 " The stuff below is required by snipmate
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
