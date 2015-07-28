@@ -8,7 +8,7 @@ set clipboard=unnamed
 set autochdir
 set shortmess+=I
 set title
-set lazyredraw
+"set lazyredraw
 set showmode
 set showcmd
 set wildmenu
@@ -25,6 +25,7 @@ set ruler
 set laststatus=2
 set mousehide
 set guioptions=ac
+set guioptions-=lLrR
 set scrollopt=ver,hor
 set scrolloff=16
 set sidescrolloff=16
@@ -53,9 +54,11 @@ set iskeyword+=-
 " Workaround for vim-jade iskeyword
 au BufEnter * set iskeyword-=.
 
+" EcmaScript 6
+au BufRead,BufNewFile *.es6 set filetype javascript
+
 " Default statusline + the filetype tag
 set statusline=%<%F\ %y%h%m%r%=%-14.(%l,%c%V%)\ %P\ %{fugitive#statusline()}
-
 set fillchars+=stl:-,stlnc:-
 
 " Remap <Leader> to ,
@@ -95,6 +98,7 @@ noremap k gk
 " Time-savers
 ino "" ""<Left>
 ino '' ''<Left>
+ino `` ``<Left>
 ino <> <><Left>
 ino () ()<Left>
 ino [] []<Left>
@@ -105,6 +109,8 @@ ino {<CR> {<CR>}<Esc>O
 
 " Get to normal mode by hitting <leader> key twice
 ino <leader><leader> <Esc>
+" Or kj
+ino kj <Esc>
 
 " Exit current brackets
 ino <S-Space> <Esc>l%%a
@@ -140,6 +146,10 @@ let g:acp_ignorecaseOption = 1
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
+" vim-session
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
 " Show whitespace stuff
 set list
 set listchars=eol:¬,tab:\|\ 
@@ -150,10 +160,9 @@ if has("gui_running")
 	set columns=120
 	set lines=30
 	set linespace=0
-	"set guifont=Menlo:h10
 	set guifont=Monaco:h10
 else
-  colorscheme kitamorkonom256
+  colorscheme kitamorkonom
 endif
 
 " Autoresize current buffer
@@ -204,7 +213,8 @@ Bundle 'https://github.com/xolox/vim-misc'
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'othree/xml.vim'
-Bundle 'https://github.com/gorodinskiy/vim-coloresque'
+"Bundle 'https://github.com/gorodinskiy/vim-coloresque'
+Bundle 'https://github.com/ap/vim-css-color'
 Bundle 'https://github.com/JulesWang/css.vim'
 
 Bundle 'jelera/vim-javascript-syntax'
