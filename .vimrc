@@ -8,7 +8,7 @@ set clipboard=unnamed
 set autochdir
 set shortmess+=I
 set title
-"set lazyredraw
+set lazyredraw
 set showmode
 set showcmd
 set wildmenu
