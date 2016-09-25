@@ -9,6 +9,7 @@ set autochdir
 set shortmess+=I
 set title
 set lazyredraw
+set ttyfast
 set showmode
 set showcmd
 set wildmenu
@@ -27,15 +28,19 @@ set mousehide
 set guioptions=ac
 set guioptions-=lLrR
 set scrollopt=ver,hor
-set scrolloff=16
+set scrolloff=24
+"set scrolloff=1
 set sidescrolloff=16
 set sidescroll=1
 set tabstop=2
 set shiftwidth=2
 set smarttab
+"set expandtab
 set autoindent
 set smartindent
 set directory=~/.vim/tmp/
+set exrc
+set secure
 
 set swb=usetab
 syntax on
@@ -54,12 +59,12 @@ set iskeyword+=-
 " Workaround for vim-jade iskeyword
 au BufEnter * set iskeyword-=.
 
-" EcmaScript 6
-au BufRead,BufNewFile *.es6 set filetype javascript
+" Treat ES6 as javascript
+au BufRead,BufNewFile *.es6 set filetype=javascript
 
 " Default statusline + the filetype tag
-set statusline=%<%F\ %y%h%m%r%=%-14.(%l,%c%V%)\ %P\ %{fugitive#statusline()}
-set fillchars+=stl:-,stlnc:-
+set statusline=%<%F\ %y%h%m%r\ %=\ %-14.(%l,%c%V\ %)\ %P\ %{fugitive#statusline()}
+set fillchars+=stl:=,stlnc:=
 
 " Remap <Leader> to ,
 let mapleader = ','
@@ -95,6 +100,10 @@ map <silent> <Leader>o :!open %<CR>
 noremap j gj
 noremap k gk
 
+" JK-ing faster
+noremap <C-j> 10j
+noremap <C-k> 10k
+
 " Time-savers
 ino "" ""<Left>
 ino '' ''<Left>
@@ -108,12 +117,13 @@ ino [<CR> [<CR>]<Esc>O
 ino {<CR> {<CR>}<Esc>O
 
 " Get to normal mode by hitting <leader> key twice
-ino <leader><leader> <Esc>
+"ino <leader><leader> <Esc>
 " Or kj
 ino kj <Esc>
 
 " Exit current brackets
 ino <S-Space> <Esc>l%%a
+ino <Leader><Leader> <Esc>l%%a
 
 " NERDTree
 let g:NERDTreeChDirMode=1
@@ -123,11 +133,11 @@ let g:NERDTreeWinSize = 40
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
 
 " TagBar
-let g:tagbar_left = 1
-let g:tagbar_width = 40
-let g:tagbar_sort = 1
-let g:tagbar_autofocus = 1
-map <silent> <Leader>t :TagbarToggle<CR>
+"let g:tagbar_left = 1
+"let g:tagbar_width = 40
+"let g:tagbar_sort = 1
+"let g:tagbar_autofocus = 1
+"map <silent> <Leader>t :TagbarToggle<CR>
 
 " Syntastic
 "let g:syntastic_error_symbol='E→'
@@ -157,9 +167,10 @@ set listchars=eol:¬,tab:\|\
 if has("gui_running")
 	"colorscheme kitamorkonom
 	colorscheme monokromatik
-	set columns=120
-	set lines=30
+	set columns=128
+	set lines=48
 	set linespace=0
+	"set guifont=Menlo:h11
 	set guifont=Monaco:h10
 else
   colorscheme kitamorkonom
@@ -209,29 +220,31 @@ Bundle 'https://github.com/tpope/vim-fugitive'
 
 Bundle 'https://github.com/xolox/vim-session'
 Bundle 'https://github.com/xolox/vim-misc'
+Bundle 'https://github.com/krisajenkins/vim-projectlocal'
 
 Bundle 'othree/html5.vim'
 Bundle 'othree/html5-syntax.vim'
 Bundle 'othree/xml.vim'
-"Bundle 'https://github.com/gorodinskiy/vim-coloresque'
 Bundle 'https://github.com/ap/vim-css-color'
 Bundle 'https://github.com/JulesWang/css.vim'
 
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'https://github.com/heavenshell/vim-jsdoc'
+"Bundle 'majutsushi/tagbar'
+"Bundle 'https://github.com/heavenshell/vim-jsdoc'
+"Bundle 'https://github.com/leafgarland/typescript-vim'
 
-Bundle 'digitaltoad/vim-jade'
+"Bundle 'digitaltoad/vim-jade'
+Bundle 'digitaltoad/vim-pug'
 Bundle 'wavded/vim-stylus'
 
 " Autocompletion
 Bundle 'https://github.com/othree/vim-autocomplpop'
-Bundle 'https://github.com/burnettk/vim-angular'
+"Bundle 'https://github.com/burnettk/vim-angular'
 Bundle 'https://github.com/othree/javascript-libraries-syntax.vim'
-Bundle 'https://github.com/matthewsimo/angular-vim-snippets'
-Bundle 'https://github.com/garbas/vim-snipmate'
+"Bundle 'https://github.com/matthewsimo/angular-vim-snippets'
+"Bundle 'https://github.com/garbas/vim-snipmate'
 Bundle 'https://github.com/ervandew/supertab'
 
 " Utilities
