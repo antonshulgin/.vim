@@ -126,11 +126,12 @@ ino <S-Space> <Esc>l%%a
 ino <Leader><Leader> <Esc>l%%a
 
 " NERDTree
-let g:NERDTreeChDirMode=1
+let g:NERDTreeChDirMode=2
 let g:NERDTreeWinSize = 40 
 
 " NERDTreeTabs
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
+map <silent> <Leader>N :NERDTreeFind<CR>
 
 " TagBar
 "let g:tagbar_left = 1
@@ -165,8 +166,8 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
-	"colorscheme kitamorkonom
-	colorscheme monokromatik
+	colorscheme kitamorkonom
+	"colorscheme monokromatik
 	set columns=128
 	set lines=48
 	set linespace=0
