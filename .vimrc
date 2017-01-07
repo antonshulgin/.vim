@@ -101,8 +101,17 @@ noremap j gj
 noremap k gk
 
 " JK-ing faster
-noremap <C-j> 10j
-noremap <C-k> 10k
+"noremap <C-j> 10j
+"noremap <C-k> 10k
+
+" Better jumping through blocks
+noremap <C-j> }}k{j^
+noremap <C-k> {{j^
+
+" Moving around word by word
+noremap <C-l> w
+noremap <C-h> b
+
 
 " Time-savers
 ino "" ""<Left>
@@ -131,7 +140,7 @@ let g:NERDTreeWinSize = 40
 
 " NERDTreeTabs
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
-map <silent> <Leader>N :NERDTreeFind<CR>
+map <silent> <Leader>N :NERDTreeFind<CR> 
 
 " TagBar
 "let g:tagbar_left = 1
@@ -169,12 +178,16 @@ if has("gui_running")
 	colorscheme kitamorkonom
 	"colorscheme monokromatik
 	set columns=128
-	set lines=48
-	set linespace=0
-	"set guifont=Menlo:h11
+	set lines=64
+	"set linespace=0
+	"set guifont=PT\ Mono:h10
+	"set linespace=0
+	"set guifont=Menlo:h10
+	set linespace=-3
 	set guifont=Monaco:h10
 else
   colorscheme kitamorkonom
+	syntax off
 endif
 
 " Autoresize current buffer
@@ -202,7 +215,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " JSDoc
-let g:jsdoc_allow_input_prompt = 1
+"let g:jsdoc_allow_input_prompt = 1
 
 " Vundle config
 filetype off
@@ -218,6 +231,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'tpope/vim-surround'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/tpope/vim-fugitive'
+Bundle 'https://github.com/airblade/vim-gitgutter'
 
 Bundle 'https://github.com/xolox/vim-session'
 Bundle 'https://github.com/xolox/vim-misc'
@@ -255,6 +269,9 @@ Bundle 'https://github.com/eparreno/vim-l9'
 " The stuff below is required by snipmate
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
+
+" Rust
+Bundle 'https://github.com/rust-lang/rust.vim'
 
 filetype on
 filetype plugin on
