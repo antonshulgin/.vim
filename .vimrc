@@ -41,6 +41,8 @@ set smartindent
 set directory=~/.vim/tmp/
 set exrc
 set secure
+set noswapfile
+set t_ut=
 
 set swb=usetab
 syntax on
@@ -112,7 +114,6 @@ noremap <C-k> {{j^
 noremap <C-l> w
 noremap <C-h> b
 
-
 " Time-savers
 ino "" ""<Left>
 ino '' ''<Left>
@@ -141,6 +142,11 @@ let g:NERDTreeWinSize = 40
 " NERDTreeTabs
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
 map <silent> <Leader>N :NERDTreeFind<CR> 
+
+" vim-gutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+map <silent> <Leader>g :GitGutterToggle<CR> 
 
 " TagBar
 "let g:tagbar_left = 1
@@ -187,7 +193,7 @@ if has("gui_running")
 	set guifont=Monaco:h10
 else
   colorscheme kitamorkonom
-	syntax off
+	"syntax off
 endif
 
 " Autoresize current buffer
