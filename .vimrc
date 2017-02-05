@@ -135,8 +135,11 @@ ino <S-Space> <Esc>l%%a
 ino <Leader><Leader> <Esc>l%%a
 
 " NERDTree
-let g:NERDTreeChDirMode=2
+let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize = 40 
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeCascadeSingleChildDir = 0
+let g:NERDTreeCascadeOpenSingleChildDir = 0
 
 " NERDTreeTabs
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
@@ -152,11 +155,16 @@ map <silent> <Leader>N :NERDTreeFind<CR>
 " Syntastic
 "let g:syntastic_error_symbol='E→'
 "let g:syntastic_warning_symbol='W→'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_error_symbol='→'
 let g:syntastic_warning_symbol='→'
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=1
+
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute']
+let g:syntastic_javascript_checkers = ['jshint']
 
 " AutoComplPop
 let g:acp_behaviorKeywordLength = 1
@@ -245,7 +253,8 @@ Bundle 'https://github.com/JulesWang/css.vim'
 
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
+Bundle 'https://github.com/vim-syntastic/syntastic'
 "Bundle 'majutsushi/tagbar'
 "Bundle 'https://github.com/heavenshell/vim-jsdoc'
 "Bundle 'https://github.com/leafgarland/typescript-vim'
