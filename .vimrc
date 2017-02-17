@@ -189,16 +189,18 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
-	colorscheme kitamorkonom
-	"colorscheme monokromatik
+	"colorscheme kitamorkonom
+	colorscheme monokromatik
 	set columns=128
 	set lines=64
-	"set linespace=0
-	"set guifont=PT\ Mono:h10
-	"set linespace=0
-	"set guifont=Menlo:h10
-	set linespace=-3
-	set guifont=Monaco:h10
+	"set linespace=-2
+	"set guifont=PT\ Mono:h12
+	"set linespace=-2
+	"set guifont=Menlo:h11
+	"set linespace=-3
+	"set guifont=Monaco:h10
+	set linespace=0
+	set guifont=Courier:h12
 else
   colorscheme kitamorkonom
 	"syntax off
