@@ -28,7 +28,7 @@ set mousehide
 set guioptions=ac
 set guioptions-=lLrR
 set scrollopt=ver,hor
-set scrolloff=24
+set scrolloff=32
 "set scrolloff=1
 set sidescrolloff=16
 set sidescroll=1
@@ -191,16 +191,19 @@ set listchars=eol:¬,tab:\|\
 if has("gui_running")
 	"colorscheme kitamorkonom
 	colorscheme monokromatik
-	set columns=128
+	set columns=96
 	set lines=64
+	" http://cm-unicode.sourceforge.net/
+	set linespace=-3
+	set guifont=CMU\ Typewriter\ Text\ Bold:h12
+	"set linespace=-4
+	"set guifont=CMU\ Typewriter\ Text\ Regular:h13
 	"set linespace=-2
-	"set guifont=PT\ Mono:h12
+	"set guifont=PT\ Mono:h11
 	"set linespace=-2
 	"set guifont=Menlo:h11
 	"set linespace=-3
 	"set guifont=Monaco:h10
-	set linespace=0
-	set guifont=Courier:h12
 else
   colorscheme kitamorkonom
 	"syntax off
