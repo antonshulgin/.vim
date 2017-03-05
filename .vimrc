@@ -32,8 +32,8 @@ set scrolloff=32
 "set scrolloff=1
 set sidescrolloff=16
 set sidescroll=1
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set smarttab
 "set expandtab
 set autoindent
