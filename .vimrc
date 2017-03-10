@@ -21,7 +21,6 @@ set wrapscan
 set nowrap
 set linebreak
 set number
-"set relativenumber
 set ruler
 set laststatus=2
 set mousehide
@@ -29,7 +28,6 @@ set guioptions=ac
 set guioptions-=lLrR
 set scrollopt=ver,hor
 set scrolloff=32
-"set scrolloff=1
 set sidescrolloff=16
 set sidescroll=1
 set tabstop=2
@@ -85,10 +83,10 @@ nnoremap gk :wincmd k<CR>
 nnoremap gl :wincmd l<CR>
 
 " Jump to start/end of line
-nnoremap mh ^
-vnoremap mh ^
-nnoremap ml $
-vnoremap ml $
+nnoremap fh ^
+vnoremap fh ^
+nnoremap fl $
+vnoremap fl $
 
 " Diff stuff
 map <silent> <Leader>d :set diff<CR>:set scrollbind<CR>
@@ -109,7 +107,7 @@ noremap <C-k> {{j^
 noremap <C-l> w
 noremap <C-h> b
 
-" Time-savers
+" Jump inside brackets quote marks and stuff as you type them
 ino "" ""<Left>
 ino '' ''<Left>
 ino `` ``<Left>
@@ -121,8 +119,7 @@ ino (<CR> (<CR>)<Esc>O
 ino [<CR> [<CR>]<Esc>O
 ino {<CR> {<CR>}<Esc>O
 
-" Get to normal mode by hitting <leader> key twice
-" Or kj
+" Get to normal mode
 ino kj <Esc>
 
 " Exit current brackets
@@ -150,10 +147,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
 let g:syntastic_error_symbol = 'E→'
 let g:syntastic_warning_symbol = 'W→'
-
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute']
 let g:syntastic_javascript_checkers = ['jshint']
 
@@ -177,8 +172,6 @@ if has("gui_running")
 	call SetDayAppearance()
 else
 	call SetNightAppearance()
-  "colorscheme kitamorkonom
-	"syntax off
 endif
 
 " Make everything look bright and classy
