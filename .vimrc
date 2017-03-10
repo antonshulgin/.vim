@@ -169,6 +169,8 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
+	set columns=96
+	set lines=56
 	call SetDayAppearance()
 else
 	call SetNightAppearance()
