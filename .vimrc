@@ -186,8 +186,10 @@ endfunction
 " Make everything look dark and comfy
 function! SetNightAppearance()
 	colorscheme kitamorkonom
-	set linespace=-2
-	set guifont=Monaco:h10
+	"set linespace=-2
+	"set guifont=Monaco:h10
+	set linespace=-3
+	set guifont=CMU\ Typewriter\ Text\ Bold:h12
 	set transparency=33
 	let g:appearance_mode = 'night'
 endfunction
