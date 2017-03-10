@@ -188,7 +188,7 @@ function! SetNightAppearance()
 	colorscheme kitamorkonom
 	set linespace=-2
 	set guifont=Monaco:h10
-	set transparency=20
+	set transparency=33
 	let g:appearance_mode = 'night'
 endfunction
 
