@@ -192,7 +192,7 @@ function! SetNightAppearance()
 	"set guifont=Monaco:h10
 	set linespace=-3
 	set guifont=CMU\ Typewriter\ Text\ Bold:h12
-	set transparency=33
+	set transparency=10
 	let g:appearance_mode = 'night'
 endfunction
 
