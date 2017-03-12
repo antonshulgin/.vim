@@ -55,11 +55,8 @@ set matchpairs+=<:>
 " Custom keywords
 set iskeyword+=-
 
-" Workaround for vim-jade iskeyword
+" Workaround for vim-pug iskeyword
 au BufEnter * set iskeyword-=.
-
-" Treat ES6 as javascript
-au BufRead,BufNewFile *.es6 set filetype=javascript
 
 " Default statusline + the filetype tag
 set statusline=%<%F\ %y%h%m%r\ %=\ %-14.(%l,%c%V\ %)\ %P\ %{fugitive#statusline()}
@@ -139,7 +136,7 @@ map <silent> <Leader>N :NERDTreeFind<CR>
 
 " vim-gutter
 let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+let g:gitgutter_eager = 1
 map <silent> <Leader>g :GitGutterToggle<CR> 
 
 " Syntastic
@@ -171,42 +168,53 @@ set listchars=eol:¬,tab:\|\
 if has("gui_running")
 	set columns=96
 	set lines=56
-	call SetDayAppearance()
+	call SetDayLook()
 else
-	call SetNightAppearance()
+	call SetNightLook()
 endif
 
 " Make everything look bright and classy
-function! SetDayAppearance()
+function! SetDayLook()
 	colorscheme monokromatik
 	set linespace=-3
 	set guifont=CMU\ Typewriter\ Text\ Bold:h12
 	set transparency=0
-	let g:appearance_mode = 'day'
+	let g:current_daytime = 'day'
 endfunction
 
 " Make everything look dark and comfy
-function! SetNightAppearance()
+function! SetNightLook()
 	colorscheme kitamorkonom
 	"set linespace=-2
 	"set guifont=Monaco:h10
 	set linespace=-3
 	set guifont=CMU\ Typewriter\ Text\ Bold:h12
 	set transparency=15
-	let g:appearance_mode = 'night'
+	let g:current_daytime = 'night'
 endfunction
 
-" Toggle between modes
-function! ToggleAppearance()
-	if g:appearance_mode == 'day'
-		call SetNightAppearance()
+" Toggle between looks
+function! ToggleLook()
+	if g:current_daytime == 'day'
+		call SetNightLook()
 	else
-		call SetDayAppearance()
+		call SetDayLook()
 	endif
 endfunction
 
-nnoremap <Leader>z :call ToggleAppearance()<CR>
-call SetDayAppearance()
+nnoremap <Leader>z :call ToggleLook()<CR>
+
+" On startup check what time is it, set appropriate look
+function! AdjustLook()
+	let current_hour = system('date "+%H"')
+	if (current_hour > 8) && (current_hour < 18)
+		call SetDayLook()
+	else
+		call SetNightLook()
+	endif
+endfunction
+
+call AdjustLook()
 
 " Autoresize current buffer
 function! ExpandCurrentBuffer()
