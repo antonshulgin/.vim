@@ -207,7 +207,7 @@ nnoremap <Leader>z :call ToggleLook()<CR>
 " On startup check what time is it, set appropriate look
 function! AdjustLook()
 	let current_hour = system('date "+%H"')
-	if (current_hour > 8) && (current_hour < 18)
+	if (current_hour > 7) && (current_hour < 18)
 		call SetDayLook()
 	else
 		call SetNightLook()
@@ -285,6 +285,11 @@ Bundle 'https://github.com/eparreno/vim-l9'
 
 " Rust
 Bundle 'https://github.com/rust-lang/rust.vim'
+
+" Markdown preview
+Bundle 'https://github.com/iamcco/markdown-preview.vim'
+
+let g:mkdp_path_to_chrome = 'open -a Firefox'
 
 filetype on
 filetype plugin on
