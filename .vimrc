@@ -168,16 +168,13 @@ set listchars=eol:¬,tab:\|\
 if has("gui_running")
 	set columns=96
 	set lines=56
-	call SetDayLook()
-else
-	call SetNightLook()
+	set linespace=-3
+	set guifont=CMU\ Typewriter\ Text\ Bold:h12
 endif
 
 " Make everything look bright and classy
 function! SetDayLook()
 	colorscheme monokromatik
-	set linespace=-3
-	set guifont=CMU\ Typewriter\ Text\ Bold:h12
 	set transparency=0
 	let g:current_daytime = 'day'
 endfunction
@@ -185,10 +182,6 @@ endfunction
 " Make everything look dark and comfy
 function! SetNightLook()
 	colorscheme kitamorkonom
-	"set linespace=-2
-	"set guifont=Monaco:h10
-	set linespace=-3
-	set guifont=CMU\ Typewriter\ Text\ Bold:h12
 	set transparency=15
 	let g:current_daytime = 'night'
 endfunction
