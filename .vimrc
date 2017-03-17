@@ -175,15 +175,19 @@ endif
 " Make everything look bright and classy
 function! SetDayLook()
 	colorscheme monokromatik
-	set transparency=0
 	let g:current_daytime = 'day'
+	if has("gui_running")
+		set transparency=0
+	endif
 endfunction
 
 " Make everything look dark and comfy
 function! SetNightLook()
 	colorscheme kitamorkonom
-	set transparency=15
 	let g:current_daytime = 'night'
+	if has("gui_running")
+		set transparency=15
+	endif
 endfunction
 
 " Toggle between looks
