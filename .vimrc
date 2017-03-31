@@ -185,9 +185,9 @@ endfunction
 function! SetNightLook()
 	colorscheme kitamorkonom
 	let g:current_daytime = 'night'
-	if has("gui_running")
-		set transparency=15
-	endif
+	"if has("gui_running")
+		"set transparency=15
+	"endif
 endfunction
 
 " Toggle between looks
@@ -292,7 +292,7 @@ Bundle 'https://github.com/mxw/vim-jsx'
 
 " Typescript bullshit
 Bundle "https://github.com/leafgarland/typescript-vim"
-let g:typescript_indent_disable = 1
+"let g:typescript_indent_disable = 1
 
 filetype on
 filetype plugin on
