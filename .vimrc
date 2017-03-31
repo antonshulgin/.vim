@@ -291,6 +291,7 @@ let g:mkdp_path_to_chrome = 'open -a Firefox'
 Bundle 'https://github.com/mxw/vim-jsx'
 
 " Typescript bullshit
+Bundle "https://github.com/Quramy/tsuquyomi"
 Bundle "https://github.com/leafgarland/typescript-vim"
 "let g:typescript_indent_disable = 1
 
