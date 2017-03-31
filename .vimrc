@@ -167,7 +167,7 @@ set listchars=eol:¬,tab:\|\
 
 if has("gui_running")
 	set columns=96
-	set lines=56
+	set lines=64
 	set linespace=-3
 	set guifont=CMU\ Typewriter\ Text\ Bold:h12
 endif
@@ -176,9 +176,9 @@ endif
 function! SetDayLook()
 	colorscheme monokromatik
 	let g:current_daytime = 'day'
-	if has("gui_running")
-		set transparency=0
-	endif
+	"if has("gui_running")
+		"set transparency=0
+	"endif
 endfunction
 
 " Make everything look dark and comfy
@@ -285,8 +285,14 @@ Bundle 'https://github.com/rust-lang/rust.vim'
 
 " Markdown preview
 Bundle 'https://github.com/iamcco/markdown-preview.vim'
-
 let g:mkdp_path_to_chrome = 'open -a Firefox'
+
+" JSX/React bullshit
+Bundle 'https://github.com/mxw/vim-jsx'
+
+" Typescript bullshit
+Bundle "https://github.com/leafgarland/typescript-vim"
+let g:typescript_indent_disable = 1
 
 filetype on
 filetype plugin on
