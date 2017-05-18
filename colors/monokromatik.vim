@@ -9,30 +9,30 @@ if exists("syntax_on")
   syntax reset
 endif
 
-hi Normal             guifg=#666666 guibg=#ffffff gui=NONE      ctermfg=241 ctermbg=231   cterm=NONE
+hi Normal             guifg=#111111 guibg=#ffffff gui=NONE      ctermfg=241 ctermbg=231   cterm=NONE
 hi Comment            guifg=#999999 guibg=NONE    gui=NONE      ctermfg=248 ctermbg=NONE  cterm=NONE
                                                                                                       
-hi Special            guifg=#111111 guibg=NONE    gui=bold      ctermfg=233 ctermbg=NONE  cterm=bold
-hi Label              guifg=#111111 guibg=NONE    gui=bold      ctermfg=233 ctermbg=NONE  cterm=bold
-hi Keyword            guifg=#111111 guibg=NONE    gui=bold      ctermfg=233 ctermbg=NONE  cterm=bold
+hi Special            guifg=#666666 guibg=NONE    gui=bold      ctermfg=233 ctermbg=NONE  cterm=bold
+hi Label              guifg=#666666 guibg=NONE    gui=bold      ctermfg=233 ctermbg=NONE  cterm=bold
+hi Keyword            guifg=#666666 guibg=NONE    gui=bold      ctermfg=233 ctermbg=NONE  cterm=bold
                                                                                                      
 hi Title              guifg=NONE    guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
 hi Underlined         guifg=NONE    guibg=NONE    gui=underline ctermfg=NONE ctermbg=NONE cterm=NONE
                                                                                                      
-hi htmlTag            guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
-hi htmlTagName        guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
-hi htmlSpecialTagName guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
-hi htmlEndTag         guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi htmlTag            guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi htmlTagName        guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi htmlSpecialTagName guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi htmlEndTag         guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
                                                                                                      
-hi xmlTag             guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
-hi xmlSpecialTagName  guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
-hi xmlTagName         guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
-hi xmlEndTag          guifg=#111111 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi xmlTag             guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi xmlSpecialTagName  guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi xmlTagName         guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
+hi xmlEndTag          guifg=#666666 guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
                                                                                                      
-hi Identifier         guifg=#111111 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
-hi Statement          guifg=#111111 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
-hi Function           guifg=#111111 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
-hi Type               guifg=#111111 guibg=NONE    gui=NONE      ctermfg=233  ctermbg=NONE cterm=NONE
+hi Identifier         guifg=#666666 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
+hi Statement          guifg=#666666 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
+hi Function           guifg=#666666 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
+hi Type               guifg=#666666 guibg=NONE    gui=NONE      ctermfg=233  ctermbg=NONE cterm=NONE
 hi PreProc            guifg=#222222 guibg=NONE    gui=NONE      ctermfg=235  ctermbg=NONE cterm=NONE
                                                                                                      
 hi Operator           guifg=NONE    guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
@@ -67,7 +67,7 @@ hi ErrorMsg           guifg=#ff4444 guibg=NONE    gui=bold      ctermfg=196  cte
 hi WarningMsg         guifg=#ffaa00 guibg=NONE    gui=bold      ctermfg=208  ctermbg=NONE cterm=bold
 hi Question           guifg=NONE    guibg=NONE    gui=bold      ctermfg=NONE ctermbg=NONE cterm=bold
                                                                                                      
-hi StatusLine         guifg=#111111 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
+hi StatusLine         guifg=#666666 guibg=NONE    gui=bold      ctermfg=233  ctermbg=NONE cterm=bold
 hi StatusLineNC       guifg=#bbbbbb guibg=NONE    gui=NONE      ctermfg=248  ctermbg=NONE cterm=NONE
 hi VertSplit          guifg=#bbbbbb guibg=NONE    gui=NONE      ctermfg=248  ctermbg=NONE cterm=NONE
                                                                                                      
@@ -77,7 +77,7 @@ hi VisualNOS          guifg=#ffffff guibg=#333333 gui=NONE      ctermfg=15   cte
 hi Folded             guifg=#bbbbbb guibg=NONE    gui=NONE      ctermfg=248  ctermbg=NONE cterm=NONE
 hi FoldColumn         guifg=#bbbbbb guibg=NONE    gui=NONE      ctermfg=248  ctermbg=NONE cterm=NONE
                                                                                                      
-hi Pmenu              guifg=#111111 guibg=#eeeeee gui=NONE      ctermfg=233  ctermbg=255  cterm=NONE
+hi Pmenu              guifg=#666666 guibg=#eeeeee gui=NONE      ctermfg=233  ctermbg=255  cterm=NONE
 hi PmenuSel           guifg=#ffffff guibg=#ff0022 gui=NONE      ctermfg=15   ctermbg=196  cterm=NONE
 hi WildMenu           guifg=#ffffff guibg=#ff0022 gui=NONE      ctermfg=15   ctermbg=196  cterm=NONE
                                                                                                      
