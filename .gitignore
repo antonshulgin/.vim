@@ -1,5 +1,7 @@
 *
 !colors/monokromatik.vim
 !colors/kitamorkonom.vim
+!colors/day.vim
+!colors/night.vim
 !.gitignore
 !.vimrc

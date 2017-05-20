@@ -116,13 +116,15 @@ set listchars=eol:¬,tab:\|\
 if has("gui_running")
 	set columns=96
 	set lines=56
-	set linespace=-3
-	set guifont=CMU\ Typewriter\ Text\ Bold:h12
+	"set linespace=-3
+	"set guifont=CMU\ Typewriter\ Text\ Bold:h12
+	set linespace=-1
+	set guifont=Input\ Mono:h10
 endif
 
 " Make everything look bright and classy
 function! SetDayLook()
-	colorscheme monokromatik
+	colorscheme day
 	let g:current_daytime = 'day'
 	"if has("gui_running")
 		"set transparency=0
@@ -131,7 +133,7 @@ endfunction
 
 " Make everything look dark and comfy
 function! SetNightLook()
-	colorscheme kitamorkonom
+	colorscheme night
 	let g:current_daytime = 'night'
 	"if has("gui_running")
 		"set transparency=15
