@@ -41,7 +41,7 @@ set secure
 set noswapfile
 set t_ut=
 set swb=usetab
-syntax on
+syntax off
 
 " Folding
 set foldmethod=indent
@@ -114,30 +114,27 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
+	syntax on
 	set columns=96
 	set lines=56
 	"set linespace=-3
 	"set guifont=CMU\ Typewriter\ Text\ Bold:h12
+	"set linespace=0
+	"set guifont=Input\ Mono:h10
 	set linespace=-1
-	set guifont=Input\ Mono:h10
+	set guifont=Input\ Mono\ Compressed:h12
 endif
 
 " Make everything look bright and classy
 function! SetDayLook()
 	colorscheme day
 	let g:current_daytime = 'day'
-	"if has("gui_running")
-		"set transparency=0
-	"endif
 endfunction
 
 " Make everything look dark and comfy
 function! SetNightLook()
 	colorscheme night
 	let g:current_daytime = 'night'
-	"if has("gui_running")
-		"set transparency=15
-	"endif
 endfunction
 
 " Toggle between looks
@@ -199,7 +196,7 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 let g:NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize = 40 
+let g:NERDTreeWinSize = 40
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeCascadeSingleChildDir = 0
 let g:NERDTreeCascadeOpenSingleChildDir = 0
@@ -207,7 +204,7 @@ let g:NERDTreeCascadeOpenSingleChildDir = 0
 " NERDTreeTabs
 Bundle 'jistr/vim-nerdtree-tabs'
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
-map <silent> <Leader>N :NERDTreeFind<CR> 
+map <silent> <Leader>N :NERDTreeFind<CR>
 
 Bundle 'tpope/vim-surround'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
@@ -217,7 +214,7 @@ Bundle 'https://github.com/tpope/vim-fugitive'
 Bundle 'https://github.com/airblade/vim-gitgutter'
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 1
-map <silent> <Leader>g :GitGutterToggle<CR> 
+map <silent> <Leader>g :GitGutterToggle<CR>
 
 " vim-session
 Bundle 'https://github.com/xolox/vim-session'
