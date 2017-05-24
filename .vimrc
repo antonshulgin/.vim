@@ -119,10 +119,8 @@ if has("gui_running")
 	set lines=56
 	"set linespace=-3
 	"set guifont=CMU\ Typewriter\ Text\ Bold:h12
-	"set linespace=0
-	"set guifont=Input\ Mono:h10
 	set linespace=-1
-	set guifont=Input\ Mono\ Compressed:h12
+	set guifont=Input\ Mono:h10
 endif
 
 " Make everything look bright and classy

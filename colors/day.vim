@@ -11,9 +11,9 @@ endif
 
 hi Normal             guifg=#333333 guibg=#ffffff gui=NONE
 hi Comment            guifg=#888888 guibg=NONE    gui=NONE
-hi Constant           guifg=#111111 guibg=NONE    gui=bold
+hi Constant           guifg=NONE    guibg=NONE    gui=bold
 hi Identifier         guifg=NONE    guibg=NONE    gui=NONE
-hi Statement          guifg=#111111 guibg=NONE    gui=bold
+hi Statement          guifg=NONE    guibg=NONE    gui=bold
 hi PreProc            guifg=NONE    guibg=NONE    gui=NONE
 hi Type               guifg=NONE    guibg=NONE    gui=NONE
 hi Special            guifg=NONE    guibg=NONE    gui=NONE
@@ -27,7 +27,7 @@ hi LineNr             guifg=#bbbbbb guibg=NONE gui=NONE
 hi NonText            guifg=#dddddd guibg=NONE gui=NONE
 hi SpecialKey         guifg=#dddddd guibg=NONE gui=NONE
 
-hi Directory          guifg=#111111 guibg=NONE    gui=bold
+hi Directory          guifg=NONE    guibg=NONE    gui=bold
 hi Search             guifg=#332211 guibg=#ffee99 gui=bold
 hi IncSearch          guifg=#332211 guibg=#ffee99 gui=bold
 
@@ -50,7 +50,7 @@ hi VisualNOS          guifg=#ffffff guibg=#111111 gui=NONE
 hi Folded             guifg=#bbbbbb guibg=NONE gui=NONE
 hi FoldColumn         guifg=#bbbbbb guibg=NONE gui=NONE
 
-hi Pmenu              guifg=#ffffff guibg=#222222 gui=NONE
+hi Pmenu              guifg=#ffffff guibg=#111111 gui=NONE
 hi PmenuSel           guifg=#ffffff guibg=#ff0022 gui=NONE
 hi WildMenu           guifg=#ffffff guibg=#ff0022 gui=NONE
 
