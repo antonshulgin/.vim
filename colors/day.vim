@@ -11,9 +11,9 @@ endif
 
 hi Normal             guifg=#333333 guibg=#ffffff gui=NONE
 hi Comment            guifg=#888888 guibg=NONE    gui=NONE
-hi Constant           guifg=NONE    guibg=NONE    gui=bold
+hi Constant           guifg=#000000 guibg=NONE    gui=bold
+hi Statement          guifg=#000000 guibg=NONE    gui=bold
 hi Identifier         guifg=NONE    guibg=NONE    gui=NONE
-hi Statement          guifg=NONE    guibg=NONE    gui=bold
 hi PreProc            guifg=NONE    guibg=NONE    gui=NONE
 hi Type               guifg=NONE    guibg=NONE    gui=NONE
 hi Special            guifg=NONE    guibg=NONE    gui=NONE
@@ -28,8 +28,8 @@ hi NonText            guifg=#dddddd guibg=NONE gui=NONE
 hi SpecialKey         guifg=#dddddd guibg=NONE gui=NONE
 
 hi Directory          guifg=NONE    guibg=NONE    gui=bold
-hi Search             guifg=#332211 guibg=#ffee99 gui=bold
-hi IncSearch          guifg=#332211 guibg=#ffee99 gui=bold
+hi Search             guifg=#332211 guibg=#ffee00 gui=bold
+hi IncSearch          guifg=#332211 guibg=#ffee00 gui=bold
 
 hi Error              guifg=#ff4444 guibg=NONE gui=bold
 hi Todo               guifg=#ffaa00 guibg=NONE gui=bold
@@ -40,7 +40,7 @@ hi ErrorMsg           guifg=#ff4444 guibg=NONE gui=NONE
 hi WarningMsg         guifg=#ffaa00 guibg=NONE gui=NONE
 hi Question           guifg=NONE    guibg=NONE gui=NONE
 
-hi StatusLine         guifg=#111111 guibg=NONE gui=NONE
+hi StatusLine         guifg=#111111 guibg=NONE gui=bold
 hi StatusLineNC       guifg=#bbbbbb guibg=NONE gui=NONE
 hi VertSplit          guifg=#bbbbbb guibg=NONE gui=NONE
 

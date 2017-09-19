@@ -115,12 +115,11 @@ set listchars=eol:¬,tab:\|\
 
 if has("gui_running")
 	syntax on
-	set columns=96
-	set lines=56
-	"set linespace=-3
-	"set guifont=CMU\ Typewriter\ Text\ Bold:h12
+	set colorcolumn=80
+	set columns=180
+	set lines=60
 	set linespace=-1
-	set guifont=Input\ Mono:h10
+	set guifont=Input_Mono:h10
 endif
 
 " Make everything look bright and classy
@@ -149,7 +148,7 @@ nnoremap <Leader>z :call ToggleLook()<CR>
 " On startup check what time is it, set appropriate look
 function! AdjustLook()
 	let current_hour = system('date "+%H"')
-	if (current_hour > 7) && (current_hour < 18)
+	if (current_hour > 6) && (current_hour < 18)
 		call SetDayLook()
 	else
 		call SetNightLook()
@@ -162,7 +161,7 @@ call AdjustLook()
 function! ExpandCurrentBuffer()
 	wincmd=
 	let &winheight = &lines * 2/3
-	let &winwidth  = &columns * 2/3
+	let &winwidth  = &columns * 1/2
 endfunction
 
 au WinEnter * call ExpandCurrentBuffer()
@@ -272,6 +271,9 @@ let g:mkdp_path_to_chrome = 'open -a Firefox'
 "Bundle "https://github.com/Quramy/tsuquyomi"
 "Bundle "https://github.com/leafgarland/typescript-vim"
 "let g:typescript_indent_disable = 1
+
+" Haml/Sass/SCSS
+Bundle 'https://github.com/tpope/vim-haml'
 
 filetype on
 filetype plugin on
