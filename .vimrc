@@ -40,8 +40,9 @@ set exrc
 set secure
 set noswapfile
 set t_ut=
+set t_Co=256
 set swb=usetab
-syntax off
+syntax on
 
 " Folding
 set foldmethod=indent
@@ -114,7 +115,6 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
-	syntax on
 	set colorcolumn=80
 	set columns=180
 	set lines=60
@@ -175,23 +175,20 @@ endfunction
 
 nnoremap ff :call MaximizeCurrentBuffer()<CR>
 
-" Omnicompletion
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,xslt setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 " Vundle config
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Bundle 'https://github.com/gmarik/vundle'
+
+" Syntax stuff
+Bundle "https://github.com/sheerun/vim-polyglot"
 
 " NERDTree
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
+Bundle 'https://github.com/scrooloose/nerdcommenter'
+Bundle 'https://github.com/scrooloose/nerdtree'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize = 40
 let g:NERDTreeChDirMode = 2
@@ -199,11 +196,11 @@ let g:NERDTreeCascadeSingleChildDir = 0
 let g:NERDTreeCascadeOpenSingleChildDir = 0
 
 " NERDTreeTabs
-Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'https://github.com/jistr/vim-nerdtree-tabs'
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
 map <silent> <Leader>N :NERDTreeFind<CR>
 
-Bundle 'tpope/vim-surround'
+Bundle 'https://github.com/tpope/vim-surround'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/tpope/vim-fugitive'
 
@@ -213,26 +210,11 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 1
 map <silent> <Leader>g :GitGutterToggle<CR>
 
-" vim-session
-Bundle 'https://github.com/xolox/vim-session'
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
-
-Bundle 'https://github.com/xolox/vim-misc'
+" Local .vimrc support
 Bundle 'https://github.com/krisajenkins/vim-projectlocal'
-
-"Bundle 'othree/html5.vim'
-"Bundle 'othree/html5-syntax.vim'
-"Bundle 'othree/xml.vim'
-Bundle 'https://github.com/ap/vim-css-color'
-"Bundle 'https://github.com/JulesWang/css.vim'
-
-"Bundle 'jelera/vim-javascript-syntax'
-"Bundle 'pangloss/vim-javascript'
 
 " Syntastic
 Bundle 'https://github.com/vim-syntastic/syntastic'
-"Bundle 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -242,38 +224,17 @@ let g:syntastic_warning_symbol = 'W→'
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute']
 let g:syntastic_javascript_checkers = ['jshint']
 
-Bundle 'digitaltoad/vim-pug'
-" Workaround for vim-pug iskeyword
-au BufEnter * set iskeyword-=.
-
-Bundle 'wavded/vim-stylus'
-
 " AutoComplPop
+" L9 is needed in order to make AutoComplPop work
+Bundle 'https://github.com/eparreno/vim-l9'
 Bundle 'https://github.com/othree/vim-autocomplpop'
 let g:acp_behaviorKeywordLength = 1
 let g:acp_ignorecaseOption = 1
-" L9 is needed in order to make AutoComplPop work
-Bundle 'https://github.com/eparreno/vim-l9'
 
 " SuperTab
 Bundle 'https://github.com/ervandew/supertab'
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
-
-" Markdown preview
-Bundle 'https://github.com/iamcco/markdown-preview.vim'
-let g:mkdp_path_to_chrome = 'open -a Firefox'
-
-" JSX/React bullshit
-"Bundle 'https://github.com/mxw/vim-jsx'
-
-" Typescript bullshit
-"Bundle "https://github.com/Quramy/tsuquyomi"
-"Bundle "https://github.com/leafgarland/typescript-vim"
-"let g:typescript_indent_disable = 1
-
-" Haml/Sass/SCSS
-Bundle 'https://github.com/tpope/vim-haml'
 
 filetype on
 filetype plugin on
