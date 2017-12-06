@@ -1,7 +1,7 @@
 " https://github.com/antonshulgin
 
 hi clear
-set background=dark
+set background=light
 
 let g:colors_name="day"
 

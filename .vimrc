@@ -27,8 +27,6 @@ set mousehide
 set guioptions=ac
 set guioptions-=lLrR
 set scrollopt=ver,hor
-set scrolloff=32
-set sidescrolloff=16
 set sidescroll=1
 set tabstop=2
 set shiftwidth=2
@@ -40,8 +38,9 @@ set exrc
 set secure
 set noswapfile
 set t_ut=
-set t_Co=256
+"set t_Co=256
 set swb=usetab
+set colorcolumn=80
 syntax on
 
 " Folding
@@ -76,6 +75,11 @@ nnoremap gj :wincmd j<CR>
 nnoremap gk :wincmd k<CR>
 nnoremap gl :wincmd l<CR>
 
+" Buffer switching
+map <Leader>bj :bnext<CR>
+map <Leader>bk :bprevious<CR>
+map <Leader>bb :buffers<CR>
+
 " Diff stuff
 map <silent> <Leader>d :set diff<CR>:set scrollbind<CR>
 map <silent> <Leader>D :set nodiff<CR>:set noscrollbind<CR>
@@ -88,8 +92,12 @@ noremap j gj
 noremap k gk
 
 " Better jumping through blocks
-noremap <C-j> }}k{j^
-noremap <C-k> {{j^
+"noremap <C-j> }}k{j^
+"noremap <C-k> {{j^
+
+" Faster jumping in general
+noremap <C-j> 4j^
+noremap <C-k> 4k^
 
 " Jump inside brackets quote marks and stuff as you type them
 ino "" ""<Left>
@@ -115,22 +123,40 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
-	set colorcolumn=80
 	set columns=180
 	set lines=60
+	set antialias
 	set linespace=-1
 	set guifont=Input_Mono:h10
 endif
 
+if has("gui_running")
+	set scrolloff=32
+	set sidescrolloff=16
+	set scrolljump=1
+else
+	set scrolloff=1
+	set sidescrolloff=1
+	set scrolljump=16
+endif
+
 " Make everything look bright and classy
 function! SetDayLook()
-	colorscheme day
+	if has("gui_running")
+		colorscheme day
+	else
+		colorscheme day16
+	endif
 	let g:current_daytime = 'day'
 endfunction
 
 " Make everything look dark and comfy
 function! SetNightLook()
-	colorscheme night
+	if has("gui_running")
+		colorscheme night
+	else
+		colorscheme night16
+	endif
 	let g:current_daytime = 'night'
 endfunction
 
@@ -161,7 +187,10 @@ call AdjustLook()
 function! ExpandCurrentBuffer()
 	wincmd=
 	let &winheight = &lines * 2/3
-	let &winwidth  = &columns * 1/2
+	"let &winwidth  = &columns * 1/2
+	let minwidth = &columns * 1/2
+	let truecolorcolumn = &numberwidth + 80 - 1
+	let &winwidth  = (minwidth < truecolorcolumn) ? truecolorcolumn : minwidth
 endfunction
 
 au WinEnter * call ExpandCurrentBuffer()
