@@ -123,11 +123,14 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
-	set columns=180
-	set lines=60
-	set antialias
-	set linespace=-1
-	set guifont=Input_Mono:h10
+	set columns=120
+	set lines=40
+	"set antialias
+	"set linespace=-1
+	"set guifont=Input_Mono:h10
+	set noantialias
+	set linespace=-2
+	set guifont=PxPlus_IBM_VGA8:h16
 endif
 
 if has("gui_running")
@@ -144,6 +147,7 @@ endif
 function! SetDayLook()
 	if has("gui_running")
 		colorscheme day
+		"set transparency=8
 	else
 		colorscheme day16
 	endif
@@ -154,6 +158,7 @@ endfunction
 function! SetNightLook()
 	if has("gui_running")
 		colorscheme night
+		"set transparency=4
 	else
 		colorscheme night16
 	endif
@@ -187,10 +192,9 @@ call AdjustLook()
 function! ExpandCurrentBuffer()
 	wincmd=
 	let &winheight = &lines * 2/3
-	"let &winwidth  = &columns * 1/2
-	let minwidth = &columns * 1/2
-	let truecolorcolumn = &numberwidth + 80 - 1
-	let &winwidth  = (minwidth < truecolorcolumn) ? truecolorcolumn : minwidth
+	let minwidth = &columns * 2/3
+	let truecolorcolumn = &numberwidth + 80
+	let &winwidth = (minwidth < truecolorcolumn) ? truecolorcolumn : minwidth
 endfunction
 
 au WinEnter * call ExpandCurrentBuffer()
