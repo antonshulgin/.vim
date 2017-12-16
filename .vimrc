@@ -125,12 +125,6 @@ set listchars=eol:¬,tab:\|\
 if has("gui_running")
 	set columns=120
 	set lines=40
-	"set antialias
-	"set linespace=-1
-	"set guifont=Input_Mono:h10
-	set noantialias
-	set linespace=-2
-	set guifont=PxPlus_IBM_VGA8:h16
 endif
 
 if has("gui_running")
@@ -141,52 +135,67 @@ else
 	set scrolloff=1
 	set sidescrolloff=1
 	set scrolljump=16
+	colorscheme 1998
 endif
 
 " Make everything look bright and classy
-function! SetDayLook()
+function! SetLightMode()
 	if has("gui_running")
+		set antialias
+		set linespace=-1
+		set guifont=Input_Mono:h10
 		colorscheme day
-		"set transparency=8
-	else
-		colorscheme day16
+		let g:current_daytime = 'day'
 	endif
-	let g:current_daytime = 'day'
 endfunction
 
 " Make everything look dark and comfy
-function! SetNightLook()
+function! SetDarkMode()
 	if has("gui_running")
+		set antialias
+		set linespace=-1
+		set guifont=Input_Mono:h10
 		colorscheme night
-		"set transparency=4
-	else
-		colorscheme night16
+		let g:current_daytime = 'night'
 	endif
-	let g:current_daytime = 'night'
 endfunction
 
 " Toggle between looks
-function! ToggleLook()
-	if g:current_daytime == 'day'
-		call SetNightLook()
-	else
-		call SetDayLook()
+function! ToggleMode()
+	if has("gui_running")
+		if g:current_daytime == 'day'
+			call SetDarkMode()
+		else
+			call SetLightMode()
+		endif
 	endif
 endfunction
 
-nnoremap <Leader>z :call ToggleLook()<CR>
+" Thpethial night mode
+function! SetNightMode()
+	if has("gui_running")
+		set noantialias
+		set linespace=0
+		"set guifont=PxPlus_IBM_VGA8:h16
+		set guifont=PxPlus_VGA_SquarePx:h24
+		colorscheme purkinje
+	endif
+endfunction
+
+nnoremap <Leader>z :call ToggleMode()<CR>
+nnoremap <Leader>Z :call SetNightMode()<CR>
 
 " On startup check what time is it, set appropriate look
-function! AdjustLook()
+function! AdjustMode()
 	let current_hour = system('date "+%H"')
 	if (current_hour > 6) && (current_hour < 18)
-		call SetDayLook()
+		call SetLightMode()
 	else
-		call SetNightLook()
+		call SetDarkMode()
 	endif
 endfunction
 
-call AdjustLook()
+call AdjustMode()
 
 " Autoresize current buffer
 function! ExpandCurrentBuffer()
