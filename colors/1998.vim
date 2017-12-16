@@ -10,9 +10,9 @@ if exists("syntax_on")
 endif
 
 hi Normal       cterm=NONE ctermfg=yellow   ctermbg=darkblue
-hi Comment      cterm=NONE ctermfg=magenta  ctermbg=NONE
+hi Comment      cterm=NONE ctermfg=cyan     ctermbg=NONE
 hi Statement    cterm=NONE ctermfg=white    ctermbg=NONE
-hi Constant     cterm=NONE ctermfg=green    ctermbg=NONE
+hi Constant     cterm=NONE ctermfg=white    ctermbg=NONE
 hi Identifier   cterm=NONE ctermfg=white    ctermbg=NONE
 hi PreProc      cterm=NONE ctermfg=NONE     ctermbg=NONE
 hi Type         cterm=NONE ctermfg=white    ctermbg=NONE
