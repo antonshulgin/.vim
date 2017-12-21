@@ -40,7 +40,6 @@ set noswapfile
 set t_ut=
 "set t_Co=256
 set swb=usetab
-set colorcolumn=80
 syntax on
 
 " Folding
@@ -127,6 +126,13 @@ if has("gui_running")
 	set lines=40
 endif
 
+function! SetDefaultFont()
+	set colorcolumn=80
+	set linespace=-1
+	set antialias
+	set guifont=Input_Mono:h10
+endfunction
+
 if has("gui_running")
 	set scrolloff=32
 	set sidescrolloff=16
@@ -134,29 +140,25 @@ if has("gui_running")
 else
 	set scrolloff=1
 	set sidescrolloff=1
-	set scrolljump=16
+	set scrolljump=8
 	colorscheme 1998
 endif
 
 " Make everything look bright and classy
 function! SetLightMode()
 	if has("gui_running")
-		set antialias
-		set linespace=-1
-		set guifont=Input_Mono:h10
-		colorscheme day
 		let g:current_daytime = 'day'
+		colorscheme day
+		call SetDefaultFont()
 	endif
 endfunction
 
 " Make everything look dark and comfy
 function! SetDarkMode()
 	if has("gui_running")
-		set antialias
-		set linespace=-1
-		set guifont=Input_Mono:h10
-		colorscheme night
 		let g:current_daytime = 'night'
+		colorscheme night
+		call SetDefaultFont()
 	endif
 endfunction
 
@@ -171,19 +173,19 @@ function! ToggleMode()
 	endif
 endfunction
 
-" Thpethial night mode
-function! SetNightMode()
+function! SetRetroMode()
 	if has("gui_running")
-		set noantialias
+		colorscheme 1998
 		set linespace=0
+		set noantialias
+		set colorcolumn=0
 		"set guifont=PxPlus_IBM_VGA8:h16
 		set guifont=PxPlus_VGA_SquarePx:h24
-		colorscheme purkinje
 	endif
 endfunction
 
 nnoremap <Leader>z :call ToggleMode()<CR>
-nnoremap <Leader>Z :call SetNightMode()<CR>
+nnoremap <Leader>Z :call SetRetroMode()<CR>
 
 " On startup check what time is it, set appropriate look
 function! AdjustMode()
@@ -210,12 +212,29 @@ au WinEnter * call ExpandCurrentBuffer()
 
 " Maximize current buffer by ff
 function! MaximizeCurrentBuffer()
-	wincmd=
-	let &winheight = &lines
-	let &winwidth  = &columns
+	call MaximizeCurrentBufferHorizontally()
+	call MaximizeCurrentBufferVertically()
 endfunction
 
 nnoremap ff :call MaximizeCurrentBuffer()<CR>
+
+" Maximize current buffer horizontally by fl
+function! MaximizeCurrentBufferHorizontally()
+	wincmd=
+	let &winwidth  = &columns
+endfunction
+
+nnoremap fh :call MaximizeCurrentBufferHorizontally()<CR>
+nnoremap fl :call MaximizeCurrentBufferHorizontally()<CR>
+
+" Maximize current buffer vertically by fj
+function! MaximizeCurrentBufferVertically()
+	wincmd=
+	let &winheight = &lines
+endfunction
+
+nnoremap fk :call MaximizeCurrentBufferVertically()<CR>
+nnoremap fj :call MaximizeCurrentBufferVertically()<CR>
 
 " Vundle config
 filetype off
