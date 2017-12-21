@@ -39,6 +39,8 @@ set secure
 set noswapfile
 set t_ut=
 "set t_Co=256
+let &t_SI = "\e[3 q"
+let &t_EI = "\e[2 q"
 set swb=usetab
 syntax on
 
@@ -130,10 +132,12 @@ function! SetDefaultFont()
 	set colorcolumn=80
 	set linespace=-1
 	set antialias
-	set guifont=Input_Mono:h10
+  set guifont=Input_Mono:h10
+	"set guifont=Input_Mono_Compressed:h12
 endfunction
 
 if has("gui_running")
+	set guicursor=i-ci:hor15-Cursor/lCursor
 	set scrolloff=32
 	set sidescrolloff=16
 	set scrolljump=1
