@@ -39,8 +39,8 @@ set secure
 set noswapfile
 set t_ut=
 "set t_Co=256
-let &t_SI = "\e[3 q"
-let &t_EI = "\e[2 q"
+"let &t_SI = "\e[3 q"
+"let &t_EI = "\e[2 q"
 set swb=usetab
 syntax on
 
@@ -130,10 +130,10 @@ endif
 
 function! SetDefaultFont()
 	set colorcolumn=80
-	set linespace=-1
 	set antialias
+	set linespace=-1
   set guifont=Input_Mono:h10
-	"set guifont=Input_Mono_Compressed:h12
+  "set guifont=Input_Mono_Compressed:h12
 endfunction
 
 if has("gui_running")
@@ -150,8 +150,9 @@ endif
 
 " Make everything look bright and classy
 function! SetLightMode()
+	let g:current_daytime = 'day'
+	colorscheme 1998
 	if has("gui_running")
-		let g:current_daytime = 'day'
 		colorscheme day
 		call SetDefaultFont()
 	endif
@@ -159,21 +160,19 @@ endfunction
 
 " Make everything look dark and comfy
 function! SetDarkMode()
+	let g:current_daytime = 'night'
+	colorscheme night
 	if has("gui_running")
-		let g:current_daytime = 'night'
-		colorscheme night
 		call SetDefaultFont()
 	endif
 endfunction
 
 " Toggle between looks
 function! ToggleMode()
-	if has("gui_running")
-		if g:current_daytime == 'day'
-			call SetDarkMode()
-		else
-			call SetLightMode()
-		endif
+	if g:current_daytime == 'day'
+		call SetDarkMode()
+	else
+		call SetLightMode()
 	endif
 endfunction
 
@@ -188,16 +187,34 @@ function! SetRetroMode()
 	endif
 endfunction
 
+function! SetAncientMode()
+	if has("gui_running")
+		colorscheme monochrome
+		set nolist
+		set linespace=0
+		set noantialias
+		set colorcolumn=0
+		"set guifont=PxPlus_IBM_CGAthin-2y:h16
+    "set guifont=PxPlus_IBM_CGAthin:h8
+		set guifont=PxPlus_AmstradPC1512-2y:h16
+	endif
+endfunction
+
 nnoremap <Leader>z :call ToggleMode()<CR>
 nnoremap <Leader>Z :call SetRetroMode()<CR>
+nnoremap <Leader>` :call SetAncientMode()<CR>
 
 " On startup check what time is it, set appropriate look
 function! AdjustMode()
 	let current_hour = system('date "+%H"')
-	if (current_hour > 6) && (current_hour < 18)
-		call SetLightMode()
+	if has("gui_running")
+		if (current_hour > 6) && (current_hour < 18)
+			call SetLightMode()
+		else
+			call SetDarkMode()
+		endif
 	else
-		call SetDarkMode()
+		call SetLightMode()
 	endif
 endfunction
 
