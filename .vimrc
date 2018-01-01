@@ -132,8 +132,9 @@ function! SetDefaultFont()
 	set colorcolumn=80
 	set antialias
 	set linespace=-1
-  set guifont=Input_Mono:h10
-  "set guifont=Input_Mono_Compressed:h12
+	set guifont=Input_Mono:h10
+	"set guifont=Input_Mono_Compressed:h12
+	"set guifont=SF_Mono:h10
 endfunction
 
 if has("gui_running")
@@ -187,22 +188,8 @@ function! SetRetroMode()
 	endif
 endfunction
 
-function! SetAncientMode()
-	if has("gui_running")
-		colorscheme monochrome
-		set nolist
-		set linespace=0
-		set noantialias
-		set colorcolumn=0
-		"set guifont=PxPlus_IBM_CGAthin-2y:h16
-    "set guifont=PxPlus_IBM_CGAthin:h8
-		set guifont=PxPlus_AmstradPC1512-2y:h16
-	endif
-endfunction
-
 nnoremap <Leader>z :call ToggleMode()<CR>
-nnoremap <Leader>Z :call SetRetroMode()<CR>
-nnoremap <Leader>` :call SetAncientMode()<CR>
+nnoremap <Leader>` :call SetRetroMode()<CR>
 
 " On startup check what time is it, set appropriate look
 function! AdjustMode()
