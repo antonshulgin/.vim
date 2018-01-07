@@ -38,9 +38,6 @@ set exrc
 set secure
 set noswapfile
 set t_ut=
-"set t_Co=256
-"let &t_SI = "\e[3 q"
-"let &t_EI = "\e[2 q"
 set swb=usetab
 syntax on
 
@@ -89,16 +86,16 @@ map <silent> <Leader>D :set nodiff<CR>:set noscrollbind<CR>
 map <silent> <Leader>o :!open %<CR>
 
 " JK through wrapped lines.
-noremap j gj
-noremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " Better jumping through blocks
-"noremap <C-j> }}k{j^
-"noremap <C-k> {{j^
+noremap <C-j> }}k{j^
+noremap <C-k> {{j^
 
 " Faster jumping in general
-noremap <C-j> 4j^
-noremap <C-k> 4k^
+"noremap <C-j> 4j^
+"noremap <C-k> 4k^
 
 " Jump inside brackets quote marks and stuff as you type them
 ino "" ""<Left>
@@ -124,21 +121,21 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
+	set antialias
+	set colorcolumn=80
 	set columns=120
 	set lines=40
-endif
-
-function! SetDefaultFont()
-	set colorcolumn=80
-	set antialias
-	set linespace=-1
+	set linespace=0
 	set guifont=Input_Mono:h10
 	"set guifont=Input_Mono_Compressed:h12
-	"set guifont=SF_Mono:h10
-endfunction
+	"set guifont=Terminus_(TTF):h12
+	"set guifont=Monaco:h10
+	"set guifont=CMU_Typewriter_Text_Bold:h12
+	"set guifont=Courier:h10
+	"set guifont=Courier_New:10
+endif
 
 if has("gui_running")
-	set guicursor=i-ci:hor15-Cursor/lCursor
 	set scrolloff=32
 	set sidescrolloff=16
 	set scrolljump=1
@@ -146,16 +143,15 @@ else
 	set scrolloff=1
 	set sidescrolloff=1
 	set scrolljump=8
-	colorscheme 1998
 endif
 
 " Make everything look bright and classy
 function! SetLightMode()
 	let g:current_daytime = 'day'
-	colorscheme 1998
 	if has("gui_running")
 		colorscheme day
-		call SetDefaultFont()
+	else
+		colorscheme 1998
 	endif
 endfunction
 
@@ -163,9 +159,6 @@ endfunction
 function! SetDarkMode()
 	let g:current_daytime = 'night'
 	colorscheme night
-	if has("gui_running")
-		call SetDefaultFont()
-	endif
 endfunction
 
 " Toggle between looks
@@ -177,31 +170,15 @@ function! ToggleMode()
 	endif
 endfunction
 
-function! SetRetroMode()
-	if has("gui_running")
-		colorscheme 1998
-		set linespace=0
-		set noantialias
-		set colorcolumn=0
-		"set guifont=PxPlus_IBM_VGA8:h16
-		set guifont=PxPlus_VGA_SquarePx:h24
-	endif
-endfunction
-
 nnoremap <Leader>z :call ToggleMode()<CR>
-nnoremap <Leader>` :call SetRetroMode()<CR>
 
 " On startup check what time is it, set appropriate look
 function! AdjustMode()
 	let current_hour = system('date "+%H"')
-	if has("gui_running")
-		if (current_hour > 6) && (current_hour < 18)
-			call SetLightMode()
-		else
-			call SetDarkMode()
-		endif
-	else
+	if (current_hour > 6) && (current_hour < 18)
 		call SetLightMode()
+	else
+		call SetDarkMode()
 	endif
 endfunction
 
@@ -211,9 +188,8 @@ call AdjustMode()
 function! ExpandCurrentBuffer()
 	wincmd=
 	let &winheight = &lines * 2/3
-	let minwidth = &columns * 2/3
-	let truecolorcolumn = &numberwidth + 80
-	let &winwidth = (minwidth < truecolorcolumn) ? truecolorcolumn : minwidth
+	let minwidth = &columns * 1/2
+	let &winwidth = (minwidth < 80) ? 80 : minwidth
 endfunction
 
 au WinEnter * call ExpandCurrentBuffer()
