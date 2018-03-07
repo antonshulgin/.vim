@@ -121,52 +121,50 @@ set list
 set listchars=eol:¬,tab:\|\ 
 
 if has("gui_running")
-	set antialias
 	set colorcolumn=80
 	set columns=120
 	set lines=40
+	set antialias
 	set linespace=0
-	set guifont=Input_Mono:h10
-	"set guifont=Input_Mono_Compressed:h12
-	"set guifont=Terminus_(TTF):h12
-	"set guifont=Monaco:h10
-	"set guifont=CMU_Typewriter_Text_Bold:h12
-	"set guifont=Courier:h10
-	"set guifont=Courier_New:10
+	set guifont=Courier:h12
 endif
 
-if has("gui_running")
+"if has("gui_running")
 	set scrolloff=32
 	set sidescrolloff=16
 	set scrolljump=1
-else
-	set scrolloff=1
-	set sidescrolloff=1
-	set scrolljump=8
-endif
+"else
+	"set scrolloff=0
+	"set sidescrolloff=1
+	"set scrolljump=32
+"endif
 
 " Make everything look bright and classy
 function! SetLightMode()
-	let g:current_daytime = 'day'
-	if has("gui_running")
-		colorscheme day
-	else
-		colorscheme 1998
-	endif
+	let g:current_mode = 'day'
+	colorscheme day
 endfunction
 
 " Make everything look dark and comfy
 function! SetDarkMode()
-	let g:current_daytime = 'night'
+	let g:current_mode = 'night'
 	colorscheme night
+endfunction
+
+" Make everything look as if it's 1998 again
+function! SetTerminalMode()
+	let g:current_mode = 'terminal'
+	colorscheme 1998
 endfunction
 
 " Toggle between looks
 function! ToggleMode()
-	if g:current_daytime == 'day'
+	if g:current_mode == 'day'
 		call SetDarkMode()
-	else
+	elseif g:current_mode == 'night'
 		call SetLightMode()
+	else
+		call SetTerminalMode()
 	endif
 endfunction
 
@@ -174,6 +172,10 @@ nnoremap <Leader>z :call ToggleMode()<CR>
 
 " On startup check what time is it, set appropriate look
 function! AdjustMode()
+	if !has("gui_running")
+		call SetTerminalMode()
+		return
+	endif
 	let current_hour = system('date "+%H"')
 	if (current_hour > 6) && (current_hour < 18)
 		call SetLightMode()
