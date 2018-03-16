@@ -19,10 +19,10 @@ hi Type         gui=NONE guifg=NONE guibg=NONE cterm=NONE ctermfg=NONE ctermbg=N
 hi Special      gui=NONE guifg=NONE guibg=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 hi Title        gui=NONE guifg=NONE guibg=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 hi Underlined   gui=underline guifg=NONE guibg=NONE cterm=underline ctermfg=NONE ctermbg=NONE
-hi Ignore       gui=NONE guifg=#b0b0b0 guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
 hi LineNr       gui=NONE guifg=#b0b0b0 guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
-hi NonText      gui=NONE guifg=#d0d0d0 guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
-hi SpecialKey   gui=NONE guifg=#d0d0d0 guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
+hi Ignore       gui=NONE guifg=#c0c0c0 guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
+hi NonText      gui=NONE guifg=#c0c0c0 guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
+hi SpecialKey   gui=NONE guifg=#c0c0c0 guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
 hi Directory    gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
 hi Search       gui=bold guifg=#000000 guibg=#ffff44 cterm=bold ctermfg=black ctermbg=yellow
 hi IncSearch    gui=bold guifg=#000000 guibg=#ffff44 cterm=bold ctermfg=black ctermbg=yellow

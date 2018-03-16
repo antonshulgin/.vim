@@ -22,7 +22,6 @@ set nowrap
 set linebreak
 set number
 set ruler
-set laststatus=2
 set mousehide
 set guioptions=ac
 set guioptions-=lLrR
@@ -53,8 +52,9 @@ set matchpairs+=<:>
 set iskeyword+=-
 
 " Default statusline + the filetype tag
-set statusline=%<%F\ %y%h%m%r\ %=\ %-14.(%l,%c%V\ %)\ %P\ %{fugitive#statusline()}
-set fillchars+=stl:=,stlnc:=
+set laststatus=2
+set fillchars+=stl:\=,stlnc:\-,vert:\|
+set statusline=%<%(%F\ %y%h%m%r%)\ %1*%=%0*\ %(%l,%c%V\ %P%(\ %{fugitive#statusline()}%)%)
 
 " Remap <Leader> to ,
 let mapleader = ','
@@ -118,15 +118,18 @@ ino <Leader><Leader> <Esc>l%%a
 
 " Show whitespace stuff
 set list
-set listchars=eol:¬,tab:\|\ 
+set listchars=eol:¬,tab:\∙\ 
 
 if has("gui_running")
 	set colorcolumn=80
-	set columns=120
-	set lines=40
+	set columns=96
+	set lines=32
 	set antialias
 	set linespace=0
 	set guifont=Courier:h12
+	"set noantialias
+	"set linespace=0
+	"set guifont=PxPlus_IBM_VGA8:h16
 endif
 
 "if has("gui_running")
@@ -170,21 +173,11 @@ endfunction
 
 nnoremap <Leader>z :call ToggleMode()<CR>
 
-" On startup check what time is it, set appropriate look
-function! AdjustMode()
-	if !has("gui_running")
-		call SetTerminalMode()
-		return
-	endif
-	let current_hour = system('date "+%H"')
-	if (current_hour > 6) && (current_hour < 18)
-		call SetLightMode()
-	else
-		call SetDarkMode()
-	endif
-endfunction
-
-call AdjustMode()
+if has("gui_running")
+	call SetLightMode()
+else
+	call SetTerminalMode()
+endif
 
 " Autoresize current buffer
 function! ExpandCurrentBuffer()
@@ -207,7 +200,7 @@ nnoremap ff :call MaximizeCurrentBuffer()<CR>
 " Maximize current buffer horizontally by fl
 function! MaximizeCurrentBufferHorizontally()
 	wincmd=
-	let &winwidth  = &columns
+	let &winwidth = &columns
 endfunction
 
 nnoremap fh :call MaximizeCurrentBufferHorizontally()<CR>
