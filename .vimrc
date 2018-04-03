@@ -19,7 +19,7 @@ set ignorecase
 set smartcase
 set wrapscan
 set nowrap
-set linebreak
+set nolinebreak
 set number
 set ruler
 set mousehide
@@ -38,6 +38,11 @@ set secure
 set noswapfile
 set t_ut=
 set swb=usetab
+set scrolloff=32
+set sidescrolloff=16
+set scrolljump=1
+set colorcolumn=80
+
 syntax on
 
 " Folding
@@ -53,8 +58,8 @@ set iskeyword+=-
 
 " Default statusline + the filetype tag
 set laststatus=2
-set fillchars+=stl:\=,stlnc:\-,vert:\|
-set statusline=%<%(%F\ %y%h%m%r%)\ %1*%=%0*\ %(%l,%c%V\ %P%(\ %{fugitive#statusline()}%)%)
+set statusline=%<%(%F\ %y%h%m%r%)%(\ %{fugitive#statusline()}%)%(\ %l,%c%V\ %P\ %)
+set fillchars=stl:\─,stlnc:\─,vert:\│
 
 " Remap <Leader> to ,
 let mapleader = ','
@@ -93,10 +98,6 @@ nnoremap k gk
 noremap <C-j> }}k{j^
 noremap <C-k> {{j^
 
-" Faster jumping in general
-"noremap <C-j> 4j^
-"noremap <C-k> 4k^
-
 " Jump inside brackets quote marks and stuff as you type them
 ino "" ""<Left>
 ino '' ''<Left>
@@ -121,26 +122,12 @@ set list
 set listchars=eol:¬,tab:\∙\ 
 
 if has("gui_running")
-	set colorcolumn=80
-	set columns=96
-	set lines=32
+  set columns=80
+  set lines=40
 	set antialias
 	set linespace=0
-	set guifont=Courier:h12
-	"set noantialias
-	"set linespace=0
-	"set guifont=PxPlus_IBM_VGA8:h16
+	set guifont=Courier_Prime:h12
 endif
-
-"if has("gui_running")
-	set scrolloff=32
-	set sidescrolloff=16
-	set scrolljump=1
-"else
-	"set scrolloff=0
-	"set sidescrolloff=1
-	"set scrolljump=32
-"endif
 
 " Make everything look bright and classy
 function! SetLightMode()

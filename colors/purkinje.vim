@@ -19,8 +19,8 @@ hi Type         gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=N
 hi Special      gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
 hi Title        gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
 hi Underlined   gui=underline guifg=NONE guibg=NONE cterm=underline ctermfg=NONE ctermbg=NONE
+hi LineNr       gui=NONE guifg=#700000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
 hi Ignore       gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
-hi LineNr       gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
 hi NonText      gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
 hi SpecialKey   gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
 hi Directory    gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
@@ -34,12 +34,12 @@ hi ErrorMsg     gui=NONE guifg=#f00000 guibg=NONE cterm=NONE ctermfg=red ctermbg
 hi WarningMsg   gui=NONE guifg=#f0a000 guibg=NONE cterm=NONE ctermfg=yellow ctermbg=NONE
 hi Question     gui=NONE guifg=NONE guibg=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 hi StatusLine   gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
-hi StatusLineNC gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
+hi StatusLineNC gui=NONE guifg=#700000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
 hi VertSplit    gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
 hi Visual       gui=inverse guifg=NONE guibg=NONE cterm=inverse ctermfg=NONE ctermbg=NONE
 hi VisualNOS    gui=inverse guifg=NONE guibg=NONE cterm=inverse ctermfg=NONE ctermbg=NONE
-hi Folded       gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
-hi FoldColumn   gui=NONE guifg=#500000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
+hi Folded       gui=NONE guifg=#700000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
+hi FoldColumn   gui=NONE guifg=#700000 guibg=NONE cterm=NONE ctermfg=darkred ctermbg=NONE
 hi Pmenu        gui=NONE guifg=#e00000 guibg=#200000 cterm=NONE ctermfg=red ctermbg=darkred
 hi PmenuSel     gui=NONE guifg=#100000 guibg=#e00000 cterm=NONE ctermfg=black ctermbg=red
 hi WildMenu     gui=NONE guifg=#100000 guibg=#e00000 cterm=NONE ctermfg=black ctermbg=red
