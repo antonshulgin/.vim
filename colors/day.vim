@@ -49,7 +49,7 @@ hi TabLineSel   gui=NONE guifg=#ffffff guibg=#000000 cterm=NONE ctermfg=white ct
 hi CursorLine   gui=NONE guifg=#ffffff guibg=#000000 cterm=NONE ctermfg=white ctermbg=black
 hi CursorLineNr gui=NONE guifg=#ffffff guibg=#000000 cterm=NONE ctermfg=white ctermbg=black
 hi Cursor       gui=NONE guifg=#ffffff guibg=#000000 cterm=NONE ctermfg=white ctermbg=black
-hi ColorColumn  gui=NONE guifg=NONE guibg=#f8f8f8 cterm=NONE ctermfg=NONE ctermbg=grey
+hi ColorColumn  gui=NONE guifg=NONE guibg=#f8f8f8 cterm=NONE ctermfg=darkred ctermbg=NONE
 hi MatchParen   gui=bold guifg=#ff0000 guibg=NONE cterm=bold ctermfg=red ctermbg=NONE
 hi SignColumn   gui=NONE guifg=NONE guibg=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 hi DiffAdd      gui=NONE guifg=#446622 guibg=#eeffdd cterm=NONE ctermfg=green ctermbg=NONE

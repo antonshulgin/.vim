@@ -127,6 +127,10 @@ if has("gui_running")
 	set antialias
 	set linespace=0
 	set guifont=Courier_Prime:h12
+	"set linespace=-2
+	"set guifont=Unifont:h12
+	"set linespace=-1
+	"set guifont=PxPlus_IBM_EGA8:h16
 endif
 
 " Make everything look bright and classy
@@ -162,6 +166,7 @@ nnoremap <Leader>z :call ToggleMode()<CR>
 
 if has("gui_running")
 	call SetLightMode()
+	"call SetDarkMode()
 else
 	call SetTerminalMode()
 endif
