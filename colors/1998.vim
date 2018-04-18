@@ -50,7 +50,7 @@ hi Cursor       cterm=NONE ctermfg=white ctermbg=darkred gui=NONE guifg=#ffffff 
 hi CursorLine   cterm=NONE ctermfg=white ctermbg=darkcyan gui=NONE guifg=#ffffff guibg=#00aaaa
 hi CursorLineNr cterm=NONE ctermfg=white ctermbg=darkcyan gui=NONE guifg=#ffffff guibg=#00aaaa
 hi ColorColumn  cterm=NONE ctermfg=magenta ctermbg=NONE gui=NONE guifg=#ff55ff guibg=NONE
-hi MatchParen   cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=#ff5555 guibg=NONE
+hi MatchParen   cterm=NONE ctermfg=magenta ctermbg=NONE gui=NONE guifg=#5555ff guibg=NONE
 hi SignColumn   cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 hi DiffAdd      cterm=NONE ctermfg=green ctermbg=NONE gui=NONE guifg=#55ff55 guibg=NONE
 hi DiffDelete   cterm=NONE ctermfg=red ctermbg=NONE gui=NONE guifg=#ff5555 guibg=NONE
