@@ -59,7 +59,9 @@ set iskeyword+=-
 " Default statusline + the filetype tag
 set laststatus=2
 set statusline=%<%(%F\ %y%h%m%r%)%(\ %{fugitive#statusline()}%)%(\ %l,%c%V\ %P\ %)
-set fillchars=stl:\─,stlnc:\─,vert:\│
+set fillchars=stl:\ ,stlnc:\ ,vert:\│
+"set fillchars=stl:\─,stlnc:\─,vert:\│
+"set fillchars=stl:\░,stlnc:\░,vert:\░
 
 " Remap <Leader> to ,
 let mapleader = ','
