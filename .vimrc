@@ -59,9 +59,13 @@ set iskeyword+=-
 " Default statusline + the filetype tag
 set laststatus=2
 set statusline=%<%(%F\ %y%h%m%r%)%(\ %{fugitive#statusline()}%)%(\ %l,%c%V\ %P\ %)
-set fillchars=stl:\ ,stlnc:\ ,vert:\│
-"set fillchars=stl:\─,stlnc:\─,vert:\│
-"set fillchars=stl:\░,stlnc:\░,vert:\░
+if has("gui_running")
+	"set fillchars=stl:\─,stlnc:\─,vert:\│
+	set fillchars=stl:\=,stlnc:\-,vert:\|
+	"set fillchars=stl:\░,stlnc:\░,vert:\░
+else
+	set fillchars=stl:\ ,stlnc:\ ,vert:\│
+endif
 
 " Remap <Leader> to ,
 let mapleader = ','
@@ -126,13 +130,17 @@ set listchars=eol:¬,tab:\∙\
 if has("gui_running")
   set columns=80
   set lines=40
-	set antialias
+	"set antialias
+	"set linespace=0
+	"set guifont=Courier_Prime:h12
+	"set guifont=Input_Mono:h10
+	set noantialias
 	set linespace=0
-	set guifont=Courier_Prime:h12
-	"set linespace=-2
-	"set guifont=Unifont:h12
-	"set linespace=-1
-	"set guifont=PxPlus_IBM_EGA8:h16
+	set guifont=PxPlus_IBM_EGA8:h16
+	"set guifont=PxPlus_IBM_VGA8:h16
+	"set noantialias
+	"set linespace=0
+	"set guifont=BigBlue_TerminalPlus:h12
 endif
 
 " Make everything look bright and classy
@@ -167,8 +175,8 @@ endfunction
 nnoremap <Leader>z :call ToggleMode()<CR>
 
 if has("gui_running")
-	call SetLightMode()
-	"call SetDarkMode()
+	"call SetLightMode()
+	call SetDarkMode()
 else
 	call SetTerminalMode()
 endif
@@ -217,6 +225,9 @@ call vundle#rc()
 
 Bundle 'https://github.com/gmarik/vundle'
 
+" .editorconfig support
+Bundle "https://github.com/editorconfig/editorconfig-vim"
+
 " Syntax stuff
 Bundle "https://github.com/sheerun/vim-polyglot"
 
@@ -255,8 +266,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = 'E→'
 let g:syntastic_warning_symbol = 'W→'
-let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute']
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_tidy_ignore_errors = [
+	\'proprietary attribute',
+	\'is invalid',
+	\'is not recognized',
+	\'discarding unexpected',
+	\'lacks value',
+	\'trimming empty'
+\]
 
 " AutoComplPop
 " L9 is needed in order to make AutoComplPop work

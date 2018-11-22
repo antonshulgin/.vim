@@ -35,7 +35,7 @@ hi WarningMsg   gui=NONE guifg=#ffaa00 guibg=NONE cterm=NONE ctermfg=yellow cter
 hi Question     gui=NONE guifg=NONE guibg=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 hi StatusLine   gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
 hi StatusLineNC gui=NONE guifg=#aaaaaa guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
-hi VertSplit    gui=NONE guifg=#ffffff guibg=NONE cterm=NONE ctermfg=white ctermbg=NONE
+hi VertSplit    gui=NONE guifg=#aaaaaa guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
 hi Visual       gui=NONE guifg=#ffffff guibg=#000000 cterm=NONE ctermfg=white ctermbg=black
 hi VisualNOS    gui=NONE guifg=#ffffff guibg=#000000 cterm=NONE ctermfg=white ctermbg=black
 hi Folded       gui=NONE guifg=#aaaaaa guibg=NONE cterm=NONE ctermfg=grey ctermbg=NONE
