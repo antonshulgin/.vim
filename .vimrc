@@ -60,12 +60,18 @@ set iskeyword+=-
 set laststatus=2
 set statusline=%<%(%F\ %y%h%m%r%)%(\ %{fugitive#statusline()}%)%(\ %l,%c%V\ %P\ %)
 if has("gui_running")
-	"set fillchars=stl:\─,stlnc:\─,vert:\│
-	set fillchars=stl:\=,stlnc:\-,vert:\|
+	set fillchars=stl:\─,stlnc:\─,vert:\│
+	"set fillchars=stl:\=,stlnc:\-,vert:\|
 	"set fillchars=stl:\░,stlnc:\░,vert:\░
 else
 	set fillchars=stl:\ ,stlnc:\ ,vert:\│
+	"set fillchars=stl:\ ,stlnc:\ ,vert:\|
 endif
+
+" Show whitespace stuff
+set list
+"set listchars=eol:¬,tab:\∙\ 
+set listchars=eol:\~,tab:\.\ 
 
 " Remap <Leader> to ,
 let mapleader = ','
@@ -123,24 +129,17 @@ ino kj <Esc>
 ino <S-Space> <Esc>l%%a
 ino <Leader><Leader> <Esc>l%%a
 
-" Show whitespace stuff
-set list
-set listchars=eol:¬,tab:\∙\ 
-
 if has("gui_running")
   set columns=80
   set lines=40
 	"set antialias
-	"set linespace=0
-	"set guifont=Courier_Prime:h12
+	"set linespace=2
+	"set guifont=Courier_Prime:h14
 	"set guifont=Input_Mono:h10
 	set noantialias
 	set linespace=0
 	set guifont=PxPlus_IBM_EGA8:h16
 	"set guifont=PxPlus_IBM_VGA8:h16
-	"set noantialias
-	"set linespace=0
-	"set guifont=BigBlue_TerminalPlus:h12
 endif
 
 " Make everything look bright and classy
