@@ -130,8 +130,8 @@ ino <S-Space> <Esc>l%%a
 ino <Leader><Leader> <Esc>l%%a
 
 if has("gui_running")
-  set columns=80
-  set lines=40
+	set columns=80
+	set lines=40
 	"set antialias
 	"set linespace=2
 	"set guifont=Courier_Prime:h14
@@ -272,7 +272,8 @@ let g:syntastic_html_tidy_ignore_errors = [
 	\'is not recognized',
 	\'discarding unexpected',
 	\'lacks value',
-	\'trimming empty'
+	\'trimming empty',
+	\"<style> isn't allowed"
 \]
 
 " AutoComplPop
