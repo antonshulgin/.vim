@@ -64,6 +64,7 @@ if has("gui_running")
 	"set fillchars=stl:\=,stlnc:\-,vert:\|
 	"set fillchars=stl:\░,stlnc:\░,vert:\░
 else
+	"set fillchars=stl:\ ,stlnc:\─,vert:\│
 	set fillchars=stl:\ ,stlnc:\ ,vert:\│
 	"set fillchars=stl:\ ,stlnc:\ ,vert:\|
 endif
@@ -138,8 +139,8 @@ if has("gui_running")
 	"set guifont=Input_Mono:h10
 	set noantialias
 	set linespace=0
-	set guifont=PxPlus_IBM_EGA8:h16
-	"set guifont=PxPlus_IBM_VGA8:h16
+	"set guifont=PxPlus_IBM_EGA8:h16
+	set guifont=PxPlus_IBM_VGA8:h16
 endif
 
 " Make everything look bright and classy

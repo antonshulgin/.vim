@@ -10,7 +10,7 @@ if exists("syntax_on")
 endif
 
 hi Normal       gui=NONE guifg=#aaaaaa guibg=#000000 cterm=NONE ctermfg=NONE ctermbg=NONE
-hi Comment      gui=NONE guifg=#666666 guibg=NONE cterm=NONE ctermfg=darkgrey ctermbg=NONE
+hi Comment      gui=NONE guifg=#666666 guibg=NONE cterm=NONE ctermfg=yellow ctermbg=darkgreen
 hi Statement    gui=bold guifg=#ffffff guibg=NONE cterm=NONE ctermfg=white ctermbg=NONE
 hi Constant     gui=bold guifg=#ffffff guibg=NONE cterm=NONE ctermfg=white ctermbg=NONE
 hi Identifier   gui=NONE guifg=NONE guibg=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
@@ -24,7 +24,7 @@ hi Ignore       gui=NONE guifg=#333333 guibg=NONE cterm=NONE ctermfg=darkgrey ct
 hi NonText      gui=NONE guifg=#333333 guibg=NONE cterm=NONE ctermfg=darkgrey ctermbg=NONE
 hi SpecialKey   gui=NONE guifg=#333333 guibg=NONE cterm=NONE ctermfg=darkgrey ctermbg=NONE
 hi Directory    gui=bold guifg=#ffffff guibg=NONE cterm=NONE ctermfg=white ctermbg=NONE
-hi Search       gui=bold guifg=#ffff44 guibg=#222200 cterm=NONE ctermfg=grey ctermbg=white
+hi Search       gui=bold guifg=#ffff44 guibg=#222200 cterm=NONE ctermfg=darkgrey ctermbg=white
 hi IncSearch    gui=bold guifg=#ffff44 guibg=#222200 cterm=NONE ctermfg=grey ctermbg=white
 hi Error        gui=bold guifg=#ff4444 guibg=NONE cterm=NONE ctermfg=red ctermbg=NONE
 hi Todo         gui=bold guifg=#ff8800 guibg=NONE cterm=NONE ctermfg=yellow ctermbg=NONE
