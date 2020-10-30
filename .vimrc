@@ -174,16 +174,6 @@ function! ToggleMode()
 	endif
 endfunction
 
-"function! ToggleMode()
-	"if g:current_mode == 'day'
-		"call SetDarkMode()
-	"elseif g:current_mode == 'night'
-		"call SetLightMode()
-	"else
-		"call SetTerminalMode()
-	"endif
-"endfunction
-
 nnoremap <Leader>z :call ToggleMode()<CR>
 
 if has("gui_running")
@@ -191,6 +181,37 @@ if has("gui_running")
 else
 	call SetDarkMode()
 endif
+
+
+" Location hopping convenience
+nnoremap <silent> <Leader>l :call ToggleLocList()<CR>
+nnoremap zJ :lfirst<CR>
+nnoremap zj :lnext<CR>
+nnoremap zk :lprevious<CR>
+
+" Open location list
+function! OpenLocList()
+	let g:is_loc_list_on = 'yes'
+	lopen
+endfunction
+
+" Hide location list
+function! HideLocList()
+	let g:is_loc_list_on = 'no'
+	lclose
+endfunction
+
+" Toggle location list
+function! ToggleLocList()
+	if g:is_loc_list_on == 'yes'
+		call HideLocList()
+	else
+		call OpenLocList()
+	endif
+endfunction
+
+call HideLocList()
+
 
 " Autoresize current buffer
 function! ExpandCurrentBuffer()
@@ -269,25 +290,51 @@ map <silent> <Leader>g :GitGutterToggle<CR>
 " Local .vimrc support
 Bundle 'https://github.com/krisajenkins/vim-projectlocal'
 
+" ALE
+Bundle 'https://github.com/dense-analysis/ale'
+let g:ale_linters = { 'javascript': [ 'eslint' ] }
+let g:ale_sign_error = 'E>'
+let g:ale_sign_warning = 'W>'
+let g:ale_warn_about_trailing_whitespace = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 1
+ 
+ 
+" TagList
+Bundle "https://github.com/vim-scripts/taglist.vim"
+
+let Tlist_Auto_Highlight_Tag = 1
+let Tlist_Auto_Update = 1
+let Tlist_Display_Tag_Scope = 0
+let Tlist_Enable_Fold_Column = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Highlight_Tag_On_BufEnter = 1
+let Tlist_File_Fold_Auto_Close = 0
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 60
+
+nnoremap <Leader>x :TlistToggle<CR>
+
+
 " Syntastic
-Bundle 'https://github.com/vim-syntastic/syntastic'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = 'E→'
-let g:syntastic_warning_symbol = 'W→'
-"let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_tidy_ignore_errors = [
-	\'proprietary attribute',
-	\'is invalid',
-	\'is not recognized',
-	\'discarding unexpected',
-	\'lacks value',
-	\'trimming empty',
-	\"<style> isn't allowed"
-\]
+"Bundle 'https://github.com/vim-syntastic/syntastic'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_error_symbol = 'E→'
+"let g:syntastic_warning_symbol = 'W→'
+""let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_html_tidy_ignore_errors = [
+	"\'proprietary attribute',
+	"\'is invalid',
+	"\'is not recognized',
+	"\'discarding unexpected',
+	"\'lacks value',
+	"\'trimming empty',
+	"\"<style> isn't allowed"
+"\]
 
 " AutoComplPop
 " L9 is required to make AutoComplPop work

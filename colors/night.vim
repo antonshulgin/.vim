@@ -56,3 +56,11 @@ hi DiffAdd       gui=NONE       guifg=#55ff55  guibg=NONE     cterm=NONE       c
 hi DiffDelete    gui=NONE       guifg=#ff5555  guibg=NONE     cterm=NONE       ctermfg=01    ctermbg=NONE
 hi DiffChange    gui=NONE       guifg=NONE     guibg=NONE     cterm=NONE       ctermfg=NONE  ctermbg=NONE
 hi DiffText      gui=NONE       guifg=#ffff55  guibg=NONE     cterm=NONE       ctermfg=11    ctermbg=NONE
+
+hi ALEError     ctermfg=01 ctermbg=NONE
+hi ALEErrorSign ctermfg=01 ctermbg=NONE
+hi ALEErrorLine ctermfg=NONE ctermbg=NONE
+
+hi ALEWarning     ctermfg=03 ctermbg=NONE
+hi ALEWarningSign ctermfg=03 ctermbg=NONE
+hi ALEWarningLine ctermfg=NONE ctermbg=NONE
