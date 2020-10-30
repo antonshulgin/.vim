@@ -64,8 +64,8 @@ if has("gui_running")
 	"set fillchars=stl:\=,stlnc:\-,vert:\|
 	"set fillchars=stl:\░,stlnc:\░,vert:\░
 else
-	"set fillchars=stl:\ ,stlnc:\─,vert:\│
-	set fillchars=stl:\ ,stlnc:\ ,vert:\│
+	set fillchars=stl:\ ,stlnc:\─,vert:\│
+	"set fillchars=stl:\ ,stlnc:\ ,vert:\│
 	"set fillchars=stl:\ ,stlnc:\ ,vert:\|
 endif
 
@@ -127,8 +127,8 @@ ino {<CR> {<CR>}<Esc>O
 ino kj <Esc>
 
 " Exit current brackets
-ino <S-Space> <Esc>l%%a
-ino <Leader><Leader> <Esc>l%%a
+"ino <S-Space> <Esc>l%%a
+"ino <Leader><Leader> <Esc>l%%a
 
 if has("gui_running")
 	set columns=80
@@ -139,14 +139,18 @@ if has("gui_running")
 	"set guifont=Input_Mono:h10
 	set noantialias
 	set linespace=0
-	"set guifont=PxPlus_IBM_EGA8:h16
-	set guifont=PxPlus_IBM_VGA8:h16
+	set guifont=PxPlus_IBM_EGA8:h16
+	"set guifont=PxPlus_IBM_VGA8:h16
 endif
 
 " Make everything look bright and classy
 function! SetLightMode()
 	let g:current_mode = 'day'
-	colorscheme day
+	if has("gui_running")
+		colorscheme day
+	else
+		colorscheme 1998
+	endif
 endfunction
 
 " Make everything look dark and comfy
@@ -165,20 +169,27 @@ endfunction
 function! ToggleMode()
 	if g:current_mode == 'day'
 		call SetDarkMode()
-	elseif g:current_mode == 'night'
-		call SetLightMode()
 	else
-		call SetTerminalMode()
+		call SetLightMode()
 	endif
 endfunction
+
+"function! ToggleMode()
+	"if g:current_mode == 'day'
+		"call SetDarkMode()
+	"elseif g:current_mode == 'night'
+		"call SetLightMode()
+	"else
+		"call SetTerminalMode()
+	"endif
+"endfunction
 
 nnoremap <Leader>z :call ToggleMode()<CR>
 
 if has("gui_running")
-	"call SetLightMode()
 	call SetDarkMode()
 else
-	call SetTerminalMode()
+	call SetDarkMode()
 endif
 
 " Autoresize current buffer
@@ -266,7 +277,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = 'E→'
 let g:syntastic_warning_symbol = 'W→'
-let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_html_tidy_ignore_errors = [
 	\'proprietary attribute',
 	\'is invalid',
@@ -278,7 +290,7 @@ let g:syntastic_html_tidy_ignore_errors = [
 \]
 
 " AutoComplPop
-" L9 is needed in order to make AutoComplPop work
+" L9 is required to make AutoComplPop work
 Bundle 'https://github.com/eparreno/vim-l9'
 Bundle 'https://github.com/othree/vim-autocomplpop'
 let g:acp_behaviorKeywordLength = 1
