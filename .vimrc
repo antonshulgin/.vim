@@ -45,45 +45,54 @@ set colorcolumn=80
 
 syntax on
 
+
 " Folding
 set foldmethod=indent
 nnoremap zl :foldopen<CR>
 nnoremap zh :foldclose<CR>
 
+
 " Custom matching pairs
 set matchpairs+=<:>
 
+
 " Custom keywords
 set iskeyword+=-
+
 
 " Default statusline + the filetype tag
 set laststatus=2
 set statusline=%<%(%F\ %y%h%m%r%)%(\ %{fugitive#statusline()}%)%(\ %l,%c%V\ %P\ %)
 if has("gui_running")
-	set fillchars=stl:\─,stlnc:\─,vert:\│
+	set fillchars=stl:\ ,stlnc:\-,vert:\│
 	"set fillchars=stl:\=,stlnc:\-,vert:\|
 	"set fillchars=stl:\░,stlnc:\░,vert:\░
 else
+	"set fillchars=stl:\░,stlnc:\░,vert:\░
 	set fillchars=stl:\ ,stlnc:\─,vert:\│
 	"set fillchars=stl:\ ,stlnc:\ ,vert:\│
 	"set fillchars=stl:\ ,stlnc:\ ,vert:\|
 endif
 
+
 " Show whitespace stuff
 set list
-"set listchars=eol:¬,tab:\∙\ 
 set listchars=eol:\~,tab:\.\ 
+
 
 " Remap <Leader> to ,
 let mapleader = ','
+
 
 " Command mode on ; instead of :
 nnoremap ; :
 vnoremap ; :
 
+
 " Switch between tabs with t-h/t-l
 nnoremap tl :tabnext<CR>
 nnoremap th :tabprevious<CR>
+
 
 " Switch between windows with g-hjkl
 nnoremap gh :wincmd h<CR>
@@ -91,25 +100,31 @@ nnoremap gj :wincmd j<CR>
 nnoremap gk :wincmd k<CR>
 nnoremap gl :wincmd l<CR>
 
+
 " Buffer switching
 map <Leader>bj :bnext<CR>
 map <Leader>bk :bprevious<CR>
 map <Leader>bb :buffers<CR>
 
+
 " Diff stuff
 map <silent> <Leader>d :set diff<CR>:set scrollbind<CR>
 map <silent> <Leader>D :set nodiff<CR>:set noscrollbind<CR>
 
+
 " open stuff
 map <silent> <Leader>o :!open %<CR>
+
 
 " JK through wrapped lines.
 nnoremap j gj
 nnoremap k gk
 
+
 " Better jumping through blocks
 noremap <C-j> }}k{j^
 noremap <C-k> {{j^
+
 
 " Jump inside brackets quote marks and stuff as you type them
 ino "" ""<Left>
@@ -123,47 +138,63 @@ ino (<CR> (<CR>)<Esc>O
 ino [<CR> [<CR>]<Esc>O
 ino {<CR> {<CR>}<Esc>O
 
+
+" Poor man's jump to definition
+nnoremap <silent> <C-d> :call JumpToDefinition()<CR>
+
+function! JumpToDefinition()
+	normal! wbve"ay
+
+	let selection = @a
+	let pattern = '\<function\>\s*\<' . selection . '\>'
+
+	execute "normal /" . pattern . "\<CR>w"
+endfunction
+
+
 " Get to normal mode
 ino kj <Esc>
 
-" Exit current brackets
-"ino <S-Space> <Esc>l%%a
-"ino <Leader><Leader> <Esc>l%%a
 
 if has("gui_running")
 	set columns=80
 	set lines=40
-	"set antialias
-	"set linespace=2
-	"set guifont=Courier_Prime:h14
-	"set guifont=Input_Mono:h10
-	set noantialias
-	set linespace=0
-	set guifont=PxPlus_IBM_EGA8:h16
-	"set guifont=PxPlus_IBM_VGA8:h16
+	
+	set antialias
+	set linespace=-4
+	set guifont=Iosevka_Fixed_Medium:h14
 endif
+
 
 " Make everything look bright and classy
 function! SetLightMode()
 	let g:current_mode = 'day'
 	if has("gui_running")
-		colorscheme day
+		colorscheme m-light
 	else
-		colorscheme 1998
+		"colorscheme 1998
+		colorscheme day
 	endif
 endfunction
+
 
 " Make everything look dark and comfy
 function! SetDarkMode()
 	let g:current_mode = 'night'
-	colorscheme night
+	if has("gui_running")
+		colorscheme m-dark
+	else
+		colorscheme night
+	endif
 endfunction
 
-" Make everything look as if it's 1998 again
+
+" Make everything look 1998
 function! SetTerminalMode()
 	let g:current_mode = 'terminal'
 	colorscheme 1998
 endfunction
+
 
 " Toggle between looks
 function! ToggleMode()
@@ -176,18 +207,19 @@ endfunction
 
 nnoremap <Leader>z :call ToggleMode()<CR>
 
-if has("gui_running")
-	call SetDarkMode()
-else
-	call SetDarkMode()
-endif
+call SetDarkMode()
+"if has("gui_running")
+	"call SetDarkMode()
+"else
+	"call SetDarkMode()
+"endif
 
 
 " Location hopping convenience
 nnoremap <silent> <Leader>l :call ToggleLocList()<CR>
-nnoremap zJ :lfirst<CR>
 nnoremap zj :lnext<CR>
 nnoremap zk :lprevious<CR>
+
 
 " Open location list
 function! OpenLocList()
@@ -195,11 +227,13 @@ function! OpenLocList()
 	lopen
 endfunction
 
+
 " Hide location list
 function! HideLocList()
 	let g:is_loc_list_on = 'no'
 	lclose
 endfunction
+
 
 " Toggle location list
 function! ToggleLocList()
@@ -218,10 +252,11 @@ function! ExpandCurrentBuffer()
 	wincmd=
 	let &winheight = &lines * 2/3
 	let minwidth = &columns * 1/2
-	let &winwidth = (minwidth < 80) ? 80 : minwidth
+	let &winwidth = (minwidth < 90) ? 90 : minwidth
 endfunction
 
 au WinEnter * call ExpandCurrentBuffer()
+
 
 " Maximize current buffer by ff
 function! MaximizeCurrentBuffer()
@@ -230,6 +265,7 @@ function! MaximizeCurrentBuffer()
 endfunction
 
 nnoremap ff :call MaximizeCurrentBuffer()<CR>
+
 
 " Maximize current buffer horizontally by fl
 function! MaximizeCurrentBufferHorizontally()
@@ -240,6 +276,7 @@ endfunction
 nnoremap fh :call MaximizeCurrentBufferHorizontally()<CR>
 nnoremap fl :call MaximizeCurrentBufferHorizontally()<CR>
 
+
 " Maximize current buffer vertically by fj
 function! MaximizeCurrentBufferVertically()
 	wincmd=
@@ -249,6 +286,7 @@ endfunction
 nnoremap fk :call MaximizeCurrentBufferVertically()<CR>
 nnoremap fj :call MaximizeCurrentBufferVertically()<CR>
 
+
 " Vundle config
 filetype off
 
@@ -257,11 +295,14 @@ call vundle#rc()
 
 Bundle 'https://github.com/gmarik/vundle'
 
+
 " .editorconfig support
 Bundle "https://github.com/editorconfig/editorconfig-vim"
 
+
 " Syntax stuff
 Bundle "https://github.com/sheerun/vim-polyglot"
+
 
 " NERDTree
 Bundle 'https://github.com/scrooloose/nerdcommenter'
@@ -272,14 +313,17 @@ let g:NERDTreeChDirMode = 2
 let g:NERDTreeCascadeSingleChildDir = 0
 let g:NERDTreeCascadeOpenSingleChildDir = 0
 
+
 " NERDTreeTabs
 Bundle 'https://github.com/jistr/vim-nerdtree-tabs'
 map <silent> <Leader>n :NERDTreeTabsToggle<CR>
 map <silent> <Leader>N :NERDTreeFind<CR>
 
+
 Bundle 'https://github.com/tpope/vim-surround'
 Bundle 'https://github.com/terryma/vim-multiple-cursors'
 Bundle 'https://github.com/tpope/vim-fugitive'
+
 
 " vim-gutter
 Bundle 'https://github.com/airblade/vim-gitgutter'
@@ -287,66 +331,37 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 1
 map <silent> <Leader>g :GitGutterToggle<CR>
 
+
 " Local .vimrc support
 Bundle 'https://github.com/krisajenkins/vim-projectlocal'
 
+
 " ALE
 Bundle 'https://github.com/dense-analysis/ale'
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = { 'javascript': [ 'eslint' ] }
+let g:ale_open_list = 1
 let g:ale_sign_error = 'E>'
 let g:ale_sign_warning = 'W>'
 let g:ale_warn_about_trailing_whitespace = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 1
- 
- 
-" TagList
-Bundle "https://github.com/vim-scripts/taglist.vim"
 
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Update = 1
-let Tlist_Display_Tag_Scope = 0
-let Tlist_Enable_Fold_Column = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Highlight_Tag_On_BufEnter = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 60
-
-nnoremap <Leader>x :TlistToggle<CR>
-
-
-" Syntastic
-"Bundle 'https://github.com/vim-syntastic/syntastic'
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_error_symbol = 'E→'
-"let g:syntastic_warning_symbol = 'W→'
-""let g:syntastic_javascript_checkers = ['jshint']
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_html_tidy_ignore_errors = [
-	"\'proprietary attribute',
-	"\'is invalid',
-	"\'is not recognized',
-	"\'discarding unexpected',
-	"\'lacks value',
-	"\'trimming empty',
-	"\"<style> isn't allowed"
-"\]
 
 " AutoComplPop
-" L9 is required to make AutoComplPop work
+" vim-l9 is required to make AutoComplPop work
 Bundle 'https://github.com/eparreno/vim-l9'
 Bundle 'https://github.com/othree/vim-autocomplpop'
 let g:acp_behaviorKeywordLength = 1
 let g:acp_ignorecaseOption = 1
 
+
 " SuperTab
 Bundle 'https://github.com/ervandew/supertab'
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-n>'
+
 
 filetype on
 filetype plugin on
